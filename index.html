@@ -107,11 +107,12 @@
                 </div>
 
                 <!-- Desktop Menu -->
-                <nav class="hidden md:flex space-x-8 items-center" id="desktop-nav">
+                <nav class="hidden md:flex space-x-6 items-center" id="desktop-nav">
                     <a href="#/beranda" class="nav-link text-sm font-medium text-gray-300 hover:text-emas-500 transition-colors uppercase tracking-wider" data-route="/beranda">Beranda</a>
                     <a href="#/semester-1" class="nav-link text-sm font-medium text-gray-300 hover:text-emas-500 transition-colors uppercase tracking-wider" data-route="/semester-1">Semester 1</a>
                     <a href="#/semester-2" class="nav-link text-sm font-medium text-gray-300 hover:text-emas-500 transition-colors uppercase tracking-wider" data-route="/semester-2">Semester 2</a>
                     <a href="#/refleksi-ppg" class="nav-link text-sm font-medium text-gray-300 hover:text-emas-500 transition-colors uppercase tracking-wider" data-route="/refleksi-ppg">Refleksi PPG</a>
+                    <a href="#/tindak-lanjut" class="nav-link text-sm font-medium text-gray-300 hover:text-emas-500 transition-colors uppercase tracking-wider" data-route="/tindak-lanjut">Tindak Lanjut</a>
                     <a href="#/penutup" class="nav-link text-sm font-medium text-gray-300 hover:text-emas-500 transition-colors uppercase tracking-wider" data-route="/penutup">Penutup</a>
                 </nav>
 
@@ -130,6 +131,7 @@
             <a href="#/semester-1" class="nav-link block py-2 text-base font-medium text-gray-300 hover:text-emas-500" data-route="/semester-1">Semester 1</a>
             <a href="#/semester-2" class="nav-link block py-2 text-base font-medium text-gray-300 hover:text-emas-500" data-route="/semester-2">Semester 2</a>
             <a href="#/refleksi-ppg" class="nav-link block py-2 text-base font-medium text-gray-300 hover:text-emas-500" data-route="/refleksi-ppg">Refleksi PPG</a>
+            <a href="#/tindak-lanjut" class="nav-link block py-2 text-base font-medium text-gray-300 hover:text-emas-500" data-route="/tindak-lanjut">Tindak Lanjut</a>
             <a href="#/penutup" class="nav-link block py-2 text-base font-medium text-gray-300 hover:text-emas-500" data-route="/penutup">Penutup</a>
         </div>
     </header>
@@ -531,6 +533,58 @@
                     "4. Berkomitmen untuk terus belajar sepanjang hayat melalui platform komunitas guru dan siap menjadi agen perubahan di lingkungan sekolah maupun masyarakat."
                 ]
             },
+            tindakLanjut: {
+                intro: "Rencana ini saya susun langsung dari hasil refleksi 11 mata kuliah di Semester 1 dan 2. Setiap langkah memiliki tautan ke refleksi asalnya, sehingga terlihat bahwa tindak lanjut ini lahir dari pengalaman dan tantangan nyata selama PPG.",
+                tahap: [
+                    {
+                        label: "Jangka Pendek", waktu: "Mulai dari kelas saya sendiri", icon: "ph-seedling",
+                        fokus: "Membenahi praktik mengajar sehari-hari",
+                        aksi: [
+                            { teks: "Mengenali potensi, kebutuhan, dan latar belakang setiap murid, serta menghadirkan suasana kelas yang aman, nyaman, dan menghargai perbedaan.", src: ["s1-1", "s1-2"] },
+                            { teks: "Membuka pelajaran dengan pertanyaan pemantik yang dekat dengan kehidupan murid, dan menilai proses berpikir murid, bukan hanya jawaban akhir.", src: ["s1-3"] },
+                            { teks: "Membenahi pengelolaan waktu, memilih kegiatan yang benar-benar selaras dengan tujuan, dan membagi kesempatan berpendapat secara merata.", src: ["s1-4"] },
+                            { teks: "Menghargai usaha dan strategi murid dengan kalimat positif, misalnya \"Kamu belum berhasil sekarang, mari coba cara lain\", serta memberi kesempatan mencoba kembali.", src: ["s1-5"] },
+                            { teks: "Selalu menyiapkan rencana cadangan (plan B) luring dengan flashdisk atau kartu cetak setiap kali memakai teknologi.", src: ["s2-5"] }
+                        ]
+                    },
+                    {
+                        label: "Jangka Menengah", waktu: "Mengembangkan strategi pembelajaran", icon: "ph-tree",
+                        fokus: "Pembelajaran berdiferensiasi, sosial emosional, dan literasi",
+                        aksi: [
+                            { teks: "Memakai asesmen diagnostik sebagai dasar pengelompokan dan bentuk pendampingan, serta menyediakan LKPD sesuai tingkat kesiapan murid.", src: ["s2-2", "s1-2"] },
+                            { teks: "Merancang pembelajaran berdiferensiasi lewat eksperimen, diskusi, dan poster dengan peran yang sesuai potensi murid, disertai media interaktif.", src: ["s1-2", "s1-4"] },
+                            { teks: "Mengintegrasikan PSE melalui kerja kelompok, pembagian peran, dan refleksi harian, sambil membiasakan diri lebih sabar, mendengarkan, dan menghindari label negatif.", src: ["s2-1"] },
+                            { teks: "Menerapkan strategi literasi di setiap mata pelajaran: membaca soal, berdiskusi, mengamati video, presentasi, dan memakai teks multimodal.", src: ["s1-6"] },
+                            { teks: "Menentukan fungsi pedagogis tiap media dengan jelas, memakai teknologi untuk dokumentasi asesmen, dan menyediakan beragam cara bagi murid untuk menunjukkan pemahamannya secara adil.", src: ["s2-5", "s2-2"] }
+                        ]
+                    },
+                    {
+                        label: "Jangka Panjang", waktu: "Bertumbuh bersama sekolah dan masyarakat", icon: "ph-flag-banner",
+                        fokus: "Menjadi guru reflektif dan agen perubahan",
+                        aksi: [
+                            { teks: "Meniru budaya refleksi guru-guru di sekolah serta terbuka terhadap masukan dari guru pamong, DPL, dan rekan sejawat.", src: ["s2-3", "s1-4"] },
+                            { teks: "Menjalin komunikasi aktif dengan orang tua, misalnya melalui grup paguyuban kelas, untuk mendukung pembelajaran murid.", src: ["s2-3"] },
+                            { teks: "Menerapkan pengalaman menyusun proposal dan memimpin projek untuk mengajak murid dan orang tua dalam program peduli lingkungan, dengan saya sebagai fasilitator.", src: ["s2-4"] },
+                            { teks: "Menghidupkan nilai-nilai Pancasila melalui keteladanan dan pembiasaan, serta terus belajar sepanjang hayat agar menjadi guru yang bijaksana dan adaptif.", src: ["s1-1"] }
+                        ]
+                    }
+                ],
+                tantangan: [
+                    { masalah: "Pengelolaan waktu untuk kegiatan yang terlalu beragam", solusi: "Memilih kegiatan yang selaras dengan tujuan pembelajaran dan membagi alokasi waktu lebih cermat.", src: ["s1-4"] },
+                    { masalah: "Partisipasi murid yang aktif dan pasif belum merata", solusi: "Membagi kesempatan berpendapat secara merata dan mengembangkan media interaktif agar murid lebih percaya diri.", src: ["s1-4", "s2-2"] },
+                    { masalah: "Murid takut salah dan terpaku pada nilai", solusi: "Menghargai proses dan usaha, memberi umpan balik spesifik, dan membuka kesempatan memperbaiki kesalahan.", src: ["s1-5"] },
+                    { masalah: "Kesiapan belajar murid yang berbeda-beda", solusi: "Asesmen diagnostik, LKPD bertingkat, dan pendampingan sesuai kebutuhan murid.", src: ["s2-2", "s1-2"] },
+                    { masalah: "Ketergantungan pada koneksi internet saat memakai teknologi", solusi: "Menyiapkan plan B luring serta menetapkan fungsi pedagogis setiap media.", src: ["s2-5"] },
+                    { masalah: "Menyelaraskan tim, perizinan, dan anggaran terbatas dalam projek", solusi: "Membagi tanggung jawab, terbuka pada masukan, dan menjadikan kendala sebagai bahan evaluasi.", src: ["s2-4"] }
+                ],
+                indikator: [
+                    { icon: "ph-users-three", title: "Partisipasi Merata", desc: "Murid yang aktif maupun pasif sama-sama mendapat dan memanfaatkan kesempatan berpendapat.", src: ["s1-4"] },
+                    { icon: "ph-brain", title: "Pemahaman Mendalam", desc: "Murid mampu mengaitkan konsep dan menerapkannya pada konteks baru, bukan sekadar menjawab benar.", src: ["s1-3", "s2-2"] },
+                    { icon: "ph-heart", title: "Iklim Kelas Positif", desc: "Kelas terasa aman, saling menghargai, dan murid berani mencoba serta belajar dari kesalahan.", src: ["s1-1", "s1-5", "s2-1"] },
+                    { icon: "ph-notebook", title: "Praktik Reflektif", desc: "Masukan dari pamong, DPL, dan rekan sejawat rutin saya tindaklanjuti untuk memperbaiki rancangan.", src: ["s2-3", "s2-5"] }
+                ],
+                komitmen: "Bagi saya, menjadi guru berarti belajar sepanjang hayat, terus membenahi diri, dan memberi sumbangsih bagi generasi penerus bangsa."
+            },
             penutup: {
                 kesan: [
                     "Menjadi seorang pendidik sejati bukanlah tujuan akhir, melainkan sebuah perjalanan panjang (maraton) pembelajaran sepanjang hayat. Program Profesi Guru (PPG) ini telah membongkar dan membangun kembali paradigma saya tentang apa artinya mengajar.",
@@ -627,7 +681,7 @@
                         <div class="h-px bg-emas-700/30 w-1/4"></div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                         <a href="#/semester-1" class="group glass-card p-8 rounded-2xl text-center flex flex-col items-center hover:-translate-y-2">
                             <div class="w-20 h-20 bg-black/80 border border-emas-700/50 text-emas-500 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]">
                                 <i class="ph ph-books text-4xl"></i>
@@ -648,6 +702,13 @@
                             </div>
                             <h3 class="font-serif font-bold text-xl mb-3 text-white group-hover:text-emas-300 transition-colors">Makna PPG</h3>
                             <p class="text-sm text-gray-400 font-light">Sintesis perjalanan diri, pendidikan, dan rencana tindak lanjut.</p>
+                        </a>
+                        <a href="#/tindak-lanjut" class="group glass-card p-8 rounded-2xl text-center flex flex-col items-center hover:-translate-y-2">
+                            <div class="w-20 h-20 bg-black/80 border border-emas-700/50 text-emas-500 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]">
+                                <i class="ph ph-path text-4xl"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-xl mb-3 text-white group-hover:text-emas-300 transition-colors">Tindak Lanjut</h3>
+                            <p class="text-sm text-gray-400 font-light">Rencana jangka pendek, menengah, dan panjang yang bersumber dari refleksi Semester 1 dan 2.</p>
                         </a>
                     </div>
                 </div>
@@ -802,6 +863,105 @@
             `;
         };
 
+        const renderTindakLanjut = () => {
+            const data = siteData.tindakLanjut;
+
+            const chips = (ids) => ids.map(id => {
+                const c = siteData.refleksiMatkul[id];
+                if (!c) return '';
+                const sem = id.startsWith('s1') ? 'S1' : 'S2';
+                return `<a href="#/matkul/${id}" title="${c.title}" class="inline-flex items-center max-w-full text-[11px] tracking-wide text-emas-300/90 bg-emas-900/40 hover:bg-emas-800/60 border border-emas-700/40 hover:border-emas-500 px-2.5 py-1 rounded-full transition-colors">
+                    <i class="ph ph-link-simple mr-1.5 flex-shrink-0"></i><span class="truncate"><b class="font-bold">${sem}</b> • ${c.title}</span></a>`;
+            }).join('');
+
+            const tahapHTML = data.tahap.map((t, i) => `
+                <div class="relative pl-14 md:pl-20 pb-10 last:pb-0" style="animation: fadeIn 0.8s ease-out ${0.1 + i * 0.15}s both;">
+                    <div class="absolute left-5 md:left-8 top-14 bottom-0 w-px bg-gradient-to-b from-emas-600/60 to-transparent ${i === data.tahap.length - 1 ? 'hidden' : ''}"></div>
+                    <div class="absolute left-0 md:left-3 top-0 w-11 h-11 md:w-12 md:h-12 rounded-full bg-black border-2 border-emas-600 flex items-center justify-center text-emas-400 shadow-[0_0_15px_rgba(202,138,4,0.3)]">
+                        <i class="ph ${t.icon} text-2xl"></i>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 md:p-8">
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <span class="text-xs uppercase tracking-widest text-emas-500 font-bold">${t.label}</span>
+                            <span class="text-xs text-emas-300/70 font-light italic">${t.waktu}</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-serif font-bold text-white mb-5">${t.fokus}</h3>
+                        <ul class="space-y-5">
+                            ${t.aksi.map(a => `
+                                <li class="flex items-start">
+                                    <i class="ph ph-check-circle text-emas-500 text-xl mr-3 mt-0.5 flex-shrink-0"></i>
+                                    <div class="min-w-0">
+                                        <p class="text-gray-300 font-light leading-relaxed">${a.teks}</p>
+                                        <div class="flex flex-wrap gap-2 mt-2">${chips(a.src)}</div>
+                                    </div>
+                                </li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+
+            const tantanganHTML = data.tantangan.map(t => `
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-start mb-3">
+                        <i class="ph ph-warning-circle text-emas-600 text-xl mr-3 mt-0.5 flex-shrink-0"></i>
+                        <p class="text-white font-serif font-bold leading-snug">${t.masalah}</p>
+                    </div>
+                    <div class="flex items-start pl-0.5 mb-4">
+                        <i class="ph ph-arrow-bend-down-right text-emas-400 text-xl mr-3 flex-shrink-0"></i>
+                        <p class="text-gray-300 font-light text-sm leading-relaxed">${t.solusi}</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">${chips(t.src)}</div>
+                </div>
+            `).join('');
+
+            const indikatorHTML = data.indikator.map(k => `
+                <div class="glass-card rounded-2xl p-6 text-center flex flex-col items-center">
+                    <div class="w-14 h-14 mb-4 rounded-xl bg-black/70 border border-emas-700/50 flex items-center justify-center text-emas-400">
+                        <i class="ph ${k.icon} text-3xl"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-white mb-2">${k.title}</h4>
+                    <p class="text-sm text-gray-400 font-light leading-relaxed mb-4">${k.desc}</p>
+                    <div class="flex flex-wrap justify-center gap-2 mt-auto">${chips(k.src)}</div>
+                </div>
+            `).join('');
+
+            const heading = (txt) => `
+                <div class="flex items-center justify-center space-x-4 mb-8">
+                    <div class="h-px bg-emas-700/30 w-1/6"></div>
+                    <h2 class="text-xl md:text-2xl font-serif font-bold text-emas-300 uppercase tracking-widest text-center">${txt}</h2>
+                    <div class="h-px bg-emas-700/30 w-1/6"></div>
+                </div>`;
+
+            app.innerHTML = `
+                <div class="fade-in max-w-4xl mx-auto">
+                    <div class="text-center mb-14">
+                        <span class="text-emas-500 font-bold tracking-widest uppercase text-xs mb-2 block border-b border-emas-700/50 w-max mx-auto pb-2"><i class="ph ph-path"></i> Langkah ke Depan</span>
+                        <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6 text-white leading-tight">Rencana Tindak Lanjut</h1>
+                        <p class="text-gray-400 font-light text-lg max-w-2xl mx-auto">${data.intro}</p>
+                    </div>
+
+                    <div class="mb-16">${tahapHTML}</div>
+
+                    ${heading('Dari Tantangan ke Solusi')}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-16">${tantanganHTML}</div>
+
+                    ${heading('Indikator Keberhasilan')}
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-16">${indikatorHTML}</div>
+
+                    <div class="glass-card rounded-3xl p-8 md:p-10 text-center border-t-4 border-t-emas-500 mb-12">
+                        <i class="ph ph-quotes text-4xl text-emas-500 mb-4 block"></i>
+                        <p class="text-xl md:text-2xl font-serif italic text-gray-200 font-light leading-relaxed">${data.komitmen}</p>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="#/penutup" class="inline-flex items-center text-sm font-bold uppercase tracking-wider text-gray-400 hover:text-emas-400 transition-colors group">
+                            Lanjut ke Penutup <i class="ph ph-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+        };
+
         const renderClosing = () => {
             const data = siteData.penutup;
             app.innerHTML = `
@@ -885,6 +1045,7 @@
             else if (hash === '/semester-2') { renderSemester('2'); }
             else if (hash.startsWith('/matkul/')) { renderCourse(hash.split('/')[2]); }
             else if (hash === '/refleksi-ppg') { renderPPG(); }
+            else if (hash === '/tindak-lanjut') { renderTindakLanjut(); }
             else if (hash === '/penutup') { renderClosing(); }
             else { renderHome(); }
             
@@ -906,4 +1067,3 @@
     </script>
 </body>
 </html>
-
