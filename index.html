@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Refleksi PPG - Khairul Huda</title>
+    
+    <!-- Fonts: Inter & Lora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Lora', 'serif'],
+                    },
+                    colors: {
+                        emas: {
+                            100: '#fef3c7',
+                            300: '#fde047',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#d4af37', // Gold khusus
+                            900: '#713f12',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* TEMA HITAM & EMAS BATIK KAWUNG */
+        body {
+            /* Gradasi Hitam ke Emas Gelap + Pola Batik Kawung SVG */
+            background-color: #050505;
+            background-image: 
+                linear-gradient(135deg, rgba(5,5,5,0.95) 0%, rgba(20,15,5,0.9) 50%, rgba(10,8,0,0.95) 100%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='1.5' stroke-opacity='0.07'%3E%3Ccircle cx='0' cy='0' r='30'/%3E%3Ccircle cx='80' cy='0' r='30'/%3E%3Ccircle cx='0' cy='80' r='30'/%3E%3Ccircle cx='80' cy='80' r='30'/%3E%3Ccircle cx='40' cy='40' r='30'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            color: #e5e5e5;
+        }
+
+        .fade-in { animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #ca8a04; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+        
+        /* Glassmorphism Emas/Hitam */
+        .glass-nav {
+            background: linear-gradient(to right, rgba(5,5,5,0.9), rgba(20,15,0,0.9));
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(20, 20, 20, 0.6), rgba(10, 10, 5, 0.8));
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            background: linear-gradient(145deg, rgba(30, 25, 10, 0.7), rgba(15, 10, 0, 0.9));
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Aksen Gradasi Teks Emas */
+        .text-gold-gradient {
+            background: linear-gradient(to right, #fde047, #d4af37, #ca8a04);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans">
+
+    <header class="glass-nav fixed w-full top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#/beranda" class="font-serif font-bold text-xl flex items-center space-x-2">
+                        <i class="ph ph-feather text-emas-500 text-2xl"></i>
+                        <span class="text-gold-gradient">Portofolio PPG</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 items-center" id="desktop-nav">
+                    <a href="#/beranda" class="nav-link text-sm font-medium text-gray-300 hover:text-emas-500 transition-colors uppercase tracking-wider" data-route="/beranda">Beranda</a>
+                    <a href="#/semester-1" class="nav-link text-sm font-medium text-gray-300 hover:text-emas-500 transition-colors uppercase tracking-wider" data-route="/semester-1">Semester 1</a>
+                    <a href="#/semester-2" class="nav-link text-sm font-medium text-gray-300 hover:text-emas-500 transition-colors uppercase tracking-wider" data-route="/semester-2">Semester 2</a>
+                    <a href="#/refleksi-ppg" class="nav-link text-sm font-medium text-gray-300 hover:text-emas-500 transition-colors uppercase tracking-wider" data-route="/refleksi-ppg">Refleksi PPG</a>
+                    <a href="#/penutup" class="nav-link text-sm font-medium text-gray-300 hover:text-emas-500 transition-colors uppercase tracking-wider" data-route="/penutup">Penutup</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex md:hidden items-center">
+                    <button id="mobile-menu-btn" class="text-emas-500 p-2">
+                        <i class="ph ph-list text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-b border-emas-700/30 pb-4 px-4 space-y-2">
+            <a href="#/beranda" class="nav-link block py-2 text-base font-medium text-gray-300 hover:text-emas-500" data-route="/beranda">Beranda</a>
+            <a href="#/semester-1" class="nav-link block py-2 text-base font-medium text-gray-300 hover:text-emas-500" data-route="/semester-1">Semester 1</a>
+            <a href="#/semester-2" class="nav-link block py-2 text-base font-medium text-gray-300 hover:text-emas-500" data-route="/semester-2">Semester 2</a>
+            <a href="#/refleksi-ppg" class="nav-link block py-2 text-base font-medium text-gray-300 hover:text-emas-500" data-route="/refleksi-ppg">Refleksi PPG</a>
+            <a href="#/penutup" class="nav-link block py-2 text-base font-medium text-gray-300 hover:text-emas-500" data-route="/penutup">Penutup</a>
+        </div>
+    </header>
+
+    <main id="app-container" class="flex-grow pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full">
+        <!-- Render Area -->
+    </main>
+
+    <footer class="border-t border-emas-700/30 mt-auto bg-black/80 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto py-6 px-4 text-center">
+            <p class="text-sm text-gray-400">
+                &copy; <span id="current-year"></span> <span class="text-emas-500">Khairul Huda</span>. Portofolio Refleksi Program Profesi Guru.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * =====================================================================
+         * DATA KONTEN (TERMASUK DARI DOKUMEN KHAIRUL HUDA)
+         * =====================================================================
+         */
+        const siteData = {
+            profil: {
+                nama: "Khairul Huda",
+                lptk: "Universitas Muria Kudus",
+                foto: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAJYAlgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDwkUtFFftx8CFKaSlzQAlFFFMAoooosAUopKUUCYtJijvS0MQ2inUhFCHcSnA+9JQvWmA7NFGKDQIaetAoIpKBjqTHNJS9qAFopMmgUCFpDmlooATFJ3pTSUDHUhoFLQITFFLSGgYZpabSg0wsLzS0maUGgQUlLRQAlFFFABSGlpM0DAUtIKBSAUUhpTTaAQopaKKBCiikzRmgBaQ0ZooAQ0c0tKBQA3mkpxFNFOwxcUlL2pKTQC4pKUUHrSsMSiilzRYBKKKKGAUc5oopAFFFAp3AKQClopMAooooQxppMU/FJQAgopQKKQDhRSUUxBRRSimIUUUUhpiEooooKHAcUYoFLQSxKKD1opWAUGiiiquAGkHWlzSd6AFoooNIAJpKKKACiikJ7UAGaWm0opWCw4dKKQUuadgA0lKaSgAxS0Cg07AGaSigUAGKXFGaKYAaSlpDQAUCk5zSigBaDRQelACUYoxQOtKwBilFKKSgANJilopgIKKXikpAFIRzS0UWABS0gFLTATFKDSUVIAaBQMUvFIA7U007tSUwCiiigBtFOptAwoPSilApMYlFLQaQCGkApaKAuFFFFABRmiigAoopO9JgLRRmigLC4oxTh0oNWSNNGaDSUhi5pKUCg0AJQKKUdKAFFLSClqhBiiiihgGaSkJpKQ7CmlHNIKUUCFooFKKYCYoxSmkpAGKaRTqMUAMpwFKKKADFIaWgimAlKBQBRmgAxRRRTAMUYpcUEYpAJilAFITjnFNJyeWI9hWUqsY6FKDY5iq9WA+ppNyngMD+NRgoWwv6UuFLleN1Z/WF3Rfs32ZIBRSbdh2hsHvnkUDPAxk+g/pWkKykS4NDqjmmihXdI4Ue/U/T1qtPfIZza2yvcXA6rEu7Z9e2frTFtdTLFpDBbHHzEjzpB9T0H0FeLi88p05ONH3vPp/XzO6jl05K89PzJxdqx+WGYLjhmAX9Dz+lOWSTYH8tSc8qJO35VU+w3pY7tWlG/hQqx/yB4qSHTnVcf2wXfvulC498EgfrXkTz2q9X+Didqy6Gy/Jl7K8bQ5yOcgf40H1wfyrKuLqexLu11aX8C/e2SKsi/hnB/An8K0bC8jl/dl3C4AKsOUz6jrj6fUV34PPI1tIyu+z3+TW5zV8vlT3WndbD+tBNPuE2SFR0GO+cZ/mPeo6+hoV4VoKcXoebUpypy5ZCZpQOKTFOHpW5IYoxRmigQoFGKAaM0AJijFKKDSAaaKUnjFJSAKKXtSUWAXFIaBQaAENJSkUlIYCnU2igY6kxSClzQAlFFFKwhQKMUClpgxDSdqXNBoASkIpaKBiUUpFFSxjhQTRRVkBRiijNILhRRRTAMUYpaWgBuDS06kNADeaM0HrRz2oAQ0lOppoGheKUU2nCnYGKKXNJRTELRilFITQAuKMUDpRQAYpBQTTc0AOpKTNKKACjFFKD+lJtIAApDx1qK6uobbAlc72+5GgLO30A5qNZrmQ5CLaJjOZBvk/75Bwv4mvMxObUaF4r3pdl+vY6qODqVNXovMtfNjOwgep4FOliljQtMrogIBwhPX9KoENHkS6hKxkPy5lAC+nTA+nbg0wTssbPpxmuUjUBpJCjRg+uGBJNfLYziPEyvGnaPzuz2KGVUkk53dzRuUijZQZB8wx3bn0AA/OoZ3jRwYFn57+U5P8ALFZ0k2ub44o4dPDAZIltoQPbqM5+uKgubS/KySTw2kN02FP2aQIYznnCKeWx19K8JZvWTvJtnovA03okaiysq/Ok8S9yQcfpTPtETuFLgtnHYn/6341msxgYreymUKu1I3UF/wASO9CXJeMH7ACynCFjgqMckM2TWy4hrLYj+y6bNp4ZHUFEcAD5mxwPxzx9azpLmW5b7PaymPH/AC1GQX7YB9Dzz+VVYru0M8xV5GTA3ZzIZFHXJ6AVRvNSnkmbyJXIdgQoHAxwAAPQcCsq+d1a0eWK5U97PcungIU3d6vodFDD+7MFvL9nijJDRxHywMdST1/EnJqvcvotrGvmzwNJIMlAhk2jPU56n8qx5DJZqHnvNrvkEZ6H6dyPemwWto586G9JOMq9xbMNx9eCRj3NcM8bKUeWMUl/Xc3jQSd22aLLoFwWmt9IuLoj+Inywx/3VB/nUn+rHlN4PgdSo63DqcDrg54NVYtWuhKoS++0vGu0MzfL+AIwKRL2Uny5YprYlgQYcMG+vTn6YzSjiI7NfghunLdfqXJtagyFa1udOnJC+VdqssDL/wBdMBlx6nNJf6dNHaNqtlp32N7fHmSRPuQL6Oo6A9jgCrcF7Nbw4u8PZykqkwVZEHqGDjII7gnj9ap3L3mnSq9qQY1UgRByqlD95Fz0BGflORnkehqcGvep3svT9Ai+k7XZoaXdrdWC5RVkd/lw2e3I+nGQfrU5IIHuK5fw5NaRXN1DE8stvkTWg6SD1AI6MAfoSvTmuis38zcHdQU4JUcNkZVgOwP+NfV8P5pObcJnjZng4pKUSftyKSmzOIzhmA9MnrTlO+MkHgD0x/PrX2Srw7ng+zl2A5pRTM4OGDD04p4xW0KkZ6omUWtwoooqyQoopD1oAXrR9KKKQBzSYpaBTASk5zTjTc81I0LTaU0lJjCiiigApRSCnUxBSGlpD0oEJS5pKKBhRRRQxhRwKKRqm4ICfeimE0UrjsSgUoFApcirICiigZoAKKKKAFxRSZpCaAHZoJpAaKYBS0lGaAA009adSEUAIKcKQClpgKOlJSikPWgAopBS0AKKM0uBTaAFzTcU4YpaAGilpQBmo5nVIyzEBV5JzUTnGEXKTskOKcnZCllwSxAUdzVKWeeZPNhkFra5wLiQfNIfSNe/1qtLLJdSL+64LYSM85/Dufb8/SpF+z3MhE80rygZJRlLKB15zhcfjj0r4XMM+dZtU3aP3X/4HkfQYfLfZ25t/wAv+CMt5185odPtJZpycMTlnc+/f88D2pbm2e3JbUr5FkznyIzuIHp6A/QGmzXs0DPaWUcsMLIAdiYJz6t/U8mq0z28cQxJvuNoOFOeh7t6cZx1NfMYrGyqLlvf8F93+Z7FHDqOtv1ZLNJpMK/PYrclsBGumKoh7hUBy3bk+lV5X064kRf3m9v+WdraqAB7Fjj8cVVjhlnY+RCGH8Uu317L6n3q6LaC2jXMsaBuD8wbOPUjjHtzXn3Z1WJJf7NtljklS6nlUYUS3O4ADoAABn+QqpqGpPCcRnyVX/lnEcEnvmluLu1AITeWPJkkbaMAfnj8qypJ52UTOEVidwyPu57n1+lG4XHv5bHzbxpIlPzbP4mHqfQfzqzNcRR26BrZ1aVf9SrfOy+hPYHv+VQ6fbxRKbm9ZpWR97q3ALdgT1P0/OoGlnvrxzaq75bLSFSF/L+lOxF2PlupnjMe5Q0o2eTAmQqg5IAHc+pq5pcF86+ckC26Lwhb7xPqfp1pFFnGhS4kjLqMGGHjI7l2XjH+yCSauKhuIVPliKJgTHCBtwB3OP1P4DmmAsel2mDPLI8xjHLHB5PT29+9Vrm7tdhRFQqvYuW/PHU+5qlq+pxljC5MioQFjzhRjucfy/WsN5JbhgipkZ4VRgflSsVc2rvVV6YiYAY9aij1IEFFOxD27H/CsorGikO/JP3V/wAabvVTlY1/Ek0WFc6Gw1ea2byk4QHLQt8yScY6HjODjNbF1FBc6dMLRpJYSubZt2PKKgNtIPbG7H+6RXEiZGChkKkcblarK3c6QsscpZGGTg9/pW1Kq4JroyJwUrM1DqAOvxXqxxp57h2SJhgc4b6ZIz+NdHbBpfsxQtDBIJId68s+PmBGeijOM9euK4WwLTahCu1SAwULjg8967RbxG1gw7nLRIMnozuygYVRzjOfwFdODnyNuTsrmNePMrJamopTzC0UYTJ4wSTn6nk05id5VgQ3cVR1Ka2tCbf5JrjGRH948HoccLz71iyay8QdLja04k2+RCnQe7g8H2A/GvqZcQUcNFU6etjx1lk6rcpdTpmuQhWKWdUXPAdgPyzT2ubYgKJot3+9WHDcao0Akt9Ms7ZiRhm2+YP++juqSO51ePcbqOR9pPKwCRAPbac1EOIKl7xho+yf+ZU8rhZJy19TX8yNT88igeuaeCvVSGHYjvWTbam04JSW3ODgjcy/n1wfqKtiUZAZGRumDg5PsQOf5162Dz2NXz/D/M4q+XOmW85FJTYyp4yadX0NGtGotDzZQcdwzRmkpRW5AUUUUAIaKCKKkaCiikPSgA70Cilp2BhSZoNJSBC5oJpKBSuAUUuBS0wuNopcUGpGmNxSHpTqaaTGhpooNFBRLmkz3ooqzMcDS0ylBoCw6g03NLSEFIRS0UwEFLRQRQAmeaWkxS0AKDRSDrS00AUo60hpRTADSU6koAb3pRS0ooAKMUUUAJinYpMU24mSCMs+7rgKoyzH0ArKtWhRjzTdkOMJTdoisSB068Vk38y3bm1hVpVRgSIhuJ68E9AOnJq0wmkidrlvJjPy+Uh5x1O5voPpWbd3qxxpDHBHJGxyI+idOAcYGO/NfBZ/nTq/uY6Lr5/5H0mWZeoL2j1YTSDyhG5twkZ+YJJ83cAZ/wAPzrJF2IwLaHOZfkLADLDvj0HvVS/unmkYTEgJxtxjIHQfT2qbTB50ojWNfNlyu/n92vc/0r5Cc3J3Z7cVZWNH9zbQjFuGEp2Dk/vPp3wB39SKckc8UjNdJFvcnybZIxkgd2J6KKvCG4SMOgjUIoRpCuW9AAew9hyayrqO6uriRcOFYhJWZgBx/DmpGLJe3EwNut2PJJ5KrhM/3UXv9TTbi6jggEagSNsC5kBZvwHrVeeRLe4EdtNFuVdqsBux647DHrUNnPa2wa9OZBGMDPWSQ9Bk9u59vrTC5PcrFBZb74EuMExFvmLdQD6cYqnbyyzzx3d2fMwf3adAM9Cf89qgijnu7l57rLDdukHdj/dH+eKtlViQz3ZB3NuWKP8Ai7AD27ZoENuGN0d0hMFjGxKZPLmonuyBsj3InXH8T/X29qW5MkgWe4RWf7sMC/dUeuO/+c1ftbGG3Tzbv5WI3E7s5I7c/qfXigA0GykkZpJk+YrlYyfvnPBPoop2tas0TyWFi++TGyaZf4u5C+gHSp5pZl3JbRlXlOTkYYjHGfQdOPT61UttJEcgjcb5XG5t3AA7sx7KOtAGRZ6bc3kpWPbx992b5U9yav8A9nW0bGEXbYxglF5b3J7D2qfVLqKACKL54x9wAbQ3+0R6egrFuZ3kblzjsMYFIehblsLVTgPN064yKqTWhRS8beYvsORVcsynIP5VIsz/AHgxDDoaBEVOiYpIrL1Bp8wVwJBjceWAqIEg8UwNHTZRbXS3JVS4yUU9Mjvj+lS22qyReagdlEmTIy8NJ6L7DPXFZ53F0G4KVA5J79atWeIn3GeNju+6w4anzO1hWV7lmCW5km82Fi3mjbu6Y9j2Fa0VpP5YD2yAtzlZFH8wKpgzxxHMguY2+YNHyV9zVQXSK7I4LvnmOVyVz+X+FQXexrw2kbOirbx7wSX8yTIb2wp6VoLbxoPl0uZXxkva3DKyn6ZIx+Fc8J/KHmRW0aDp1IZT6Z6VestWdlUyBwyv8rBwcce3NXCTi7iklJF6azlvoVlt7qCV4zyLqPa/+4X6EfX86cLx9Pj23FpMsWcSQycmL0w3Rl9DVtLuKfYJiwkYEiWPCuR6Z6N9DTbi3vUtCsUsdxEgJQgYdQfQenYqcj6Gu6nOcZc9KV3/AFuupzyjFrlmiza3EMqAxzbh0AY8j2P+eamhbruAyO1YFvBCf9JiVYtw2TKc7Yj2kU9Que3b6dNJJZ7e5a31Roo7hACpUg+Yp/iGP8kHivbyvO3TfLVfz6Hn4zL1LWBpAZHUUo5pgPPXjOM9s+lO6819/h8RGtBSi7nzdWk6crNC4oNGeKSukyCkI5pwo70ANApcUuRRSAb3oNB60dqYDTRS4o21LGJRRRUjFzQOaSikIeRTTSUVQIDTD1pzUgHNSykJiilIooC46ilAoPWqJEopRTsUwuMpRStSCgBaKXNGaBAKDRRQAAUYoooAMUUueKSmgClFJThTAQ0UpptAC0opM8UCgBaKBTZM4wM8+nWonLlVwS5nYUlAjMxJVeoFNWeNYjPdllihORt688BR356Z61R1O9FrbrtUyyuQIox0z2J/p+dZl5MZCGnuTIkZJbB43YwT9eoX86/PM9zZVJuKd+3l5n0+XYLkim16kmpanFcxxuFMVqm7cCeHcn0HUDge/wCNYFzPLckxr+5gPQv1I7nFWhaTX6ZLLEoYCOPaSqJ6e5qSa3060G+cm5Zh85K5ye2ADXyPqe56GfaWkd7MqL54jBALFcjHqSP5V0lj9j0mJiiByxwWl4BAP3cdKpwXd08ZhjjhhQDICr37f/XNRXDxo4R5DeXAGECnKqf/AK3oPxo1J0RZ1jVbiSIbRHExbcqKR8nuT2PsKwtQvJApTzgxXgZ+ZgT1Oeg/Co7ny45Ve4Zi3LeWRgE9jn39agWGcsJ5YtwzwoHBPpgVQiOQsqiJc7n4Y9z7CtW3s/lElx8kNuMRqf4mPVsf56elJpWnTPcCadWMp5VSOlaTRYjljQF7hjmSUD7g6bQe30GTQBnzyCKYRmBuMFLcHlsjjd3+tS/Y5DItxekmSRsCNRlnx/CAOgHt+YrQEK2Qjk8tA5YlmblyT256frVK61B0Lw2kYFxICJZFILY/u7uw+lABLJFZAy3AVrjHyRKRhPTJ9fYcCrVoht7NtSvYTJNtBhjPRc/d/EnoPTJqlo9rBH/p96quittjQHhm9AO+O5/CtGD7Te36SXDlHOWjjHVBnG7/AHj90enWgCzbxS2NmjnZNfSEsTjcFYnlffHf8utQ342wiF5Gea5PmTMRyQOc/wC6Ow9a1rRLaTzWnVY7eP5nccfKvUL9Tx78nvXMarPLd3TvbrILiYlF54RB1+mB/WgDD1CUyXDEDc5PIHIX0AqL7LME8x1PuMZbHrj0q5LNHaJ5MDeYQfmkJ6n2qi1zM0vm+Y27PrQA3MYUgIx9ycUsTRiQbkOPY1KhW4J8yTa+PlOO/YH/ABqswwcdKAFPHQ9qkjjPzSY4UA/j2qMKShbGcVKxKWyKP4iWP8h/WgAY72Du2WY/MT61ctmSMAY3HGRgVRihlb5ljdgPapJzKhAYOBgdeBQB0FtPsUjzGXaNwAiH49T3qSe3gun8yOREO0cNFj8yDmucSZtw2sWzxgnBGasLfyxPGu5kIUA4br+FSNM0LiK4t1y6gR9GZTkH0II9PeqipNLJtVA7E+gOT+HIrTsr6OdCgKJIw5JXK/iOhqK4slELTWuYJVY70ViRx6eoxzQhlS3uCrbQ+EJyRnIP+H1rf0jVZUfbOys3RTIOCPTP9RXNNbpK29P3Mv8Asj5Sfw6VLE8gRElJGDkN1GR3FNNxd1uLdWZ1lxhsapFPFGUO26td2H/3lU8MOeR3FJLFbyTx2kYRg/8Ax7hufKfvET3Rgcj6isS0vm8wNL8xA27W5DDuv1HY1akdfntoQE34dMjBDDlWU/of5VvTrcsrtEzheNkbEEskTLGSzWzHYpY/MjD+Bv6GroZM5Rjt7Z4P4iqQnS7V7jY5aVQ8ysuMHo36/wA6khLowhkPmY5ikPV1/un3HrX1OT4uVCXuO8f6/peeh42Ooqove3LW7t3ozTflz8hLL6nrSivvqVRVIqSPm5x5XZjgaKSj3rUkU0vakzRmlcANJS0UAJRS5pDRYBDSUppKkYUUoFBpjEooooADSClopBcKKKKVwHUYooqiQpc0YoxTuACloFLSsAylFKBQaYCUUUUAFFLS4pgNopSKKAAUHpS0EcUANzS4pMUooAAKWiigQH61W1K5Szs2uC6Z5VAW71YUEkncqovUt0Hufaub1TU/tjyLbIJbVThC6YGR/EO//wBavleJMzeFpezg/el/Vz2MqwirT5pLREk0ojK3cxWRm+bYVIK5A75xmqNzc2yRtEkYjUtuEZfLsx9gM1UuppZV83fsVfl3Z5kPcj296pPOVdWjO492BwMn3r81vfVn1a0NSSeSUK7XNva54EeMNj8+PxqrFDdXVz5e0xqMkFjgKv19KbBYFlDzYUkDAIAJ/Dt/OrhurfT7cRwlmlAJb5jz9fb9TTSAnSxj2s1zdB1HKw52hsev+f1ou2dS72duskxXaSjr+7X3Hb6D8c1kXN9LetungjcYGWJ8sY7dKvafdRJFHi1kBBP7w3LfMPTkdKYhbfS0WQy3rS7mG4MygBfTnNWLW3tIZzIJZ5ZAclkQgKvcZJAH15qvc6lKjNn7xAwqk8VTl1O5kXC7NvoccfWluGxtJdxkM3k3KxDI/wBYAD6c4qN9ZgtVMVsI1cEf6sFsn0yf6Cuf+0uzb5DHI2SQNuQPfJ4qA3Fww2RuVXp8oAz+VMDTnnmuhi6mFshJLH70svtj0+uBSWEC3MhjUGC1QfPg7nkPoT0H8gKr2tplhCFLyMcSOeif7P19fyroJTa6TZrCq5lA4XHIPUkjufb6dhQIkMES3kO9FjjiTEajjbxkn69/1PanWMhs4BegN9rv3JgyPuRjofy5/EVnxyvJDPcXW5ZZ8IoHOxDyQPUkdT3zV2ad54pbph80SeREfTpnH0OPyNAE2oXQksppozgoojhj6gk8F/w6D3rI1mR9NiWySRfOZQJWBzjjJX/GtSdI7ays7ZEHnSyrlyeFUD+nJ+prn9YImv532YCkgD0A5x/L86AMaQkuSaSnqmGy/TrmkwACTnJFADVJU5FSYMjgYwzHGadHE0iHAGB33DirMFvMsbN5XmIp5Ab09KLgVQhaUpHyOg/xqdzbLcOJPMKIu1QmOCBx1qO4jaL92BtBALfjyBUKqzkjjgE8nFACtIzD5iSOw7UJKy4zkqM5XPBpoALcc/pUy2zO5VcHB5wwOPc0ANDIX2gnB+62ORVnU4GCrcgDY2ACO/FRSRKibQwMg53Dpj0HrV9AJtLEBIDIM/Q8mgDLglMbhtxBBrftpjPAGUqsyHp2/wD1HpXPshxuxgqcEVd06UxsjDkAgH3U/wCBpDTLplVboCQH5xuikxz9G9wR1psykFnjAKMcsvbPr7Vdv4EmttwG1kfzOB+ZH6H86zbacQFeS8GeT1x/9agB0GGc4JxwT6j0P07ZrURoLvT2a4JRk5LKOV9fwqhcwCB1uoyDEx+7VzTgLgzrb5DlAw9Nw9vQ0DTJ7R7qH7refHyVSRsgEjnB/Dr9K1NMu4r2xBJeJ4/mUkZGB16d/wDCueRntr9Jo1Pksd+VH3PUEdO3WrMOsL9ra4aNFdmyWRQBn/d4H4Vvh8RKhK62ZnVpKotTpYXDAuCrDO1ipyM9j9CKsLjArOsbm2vnX7MysyjBU9cDkc/iR+Aq+ufU4r9FyDHutTcXrY+WzLDKnJNaXHGjNBpK+mueUBoooouAUUUUXAWg0UUXASkNKcYptIaCiiigYUUUVIBRRRQFgooopWAdRSGirJHClFNpaAHUUlJmmgFzRTaBmhgLRS4ooAUdKKQUvagBM0e9JSimAtFFFABRRRQJi44pDwjOeFUZJJoJAGT0HWqWp3KQgzOmyJQAhIyGJ7n1ry81zGOCpc3U68HhXiJ2M7XbsLbPBJG8rOAUzkKi567R1Y+rflWSqm7iFik6RSORu3/Kp/2Ae3+NTpdXEty10JI5FDEh+uO3y9OapzToXMiCHevHLE49+elflGLxEsRVdSTufaUaUaUFFDLnSryNCZhFFF03mQMg9hjOTTLby0cLaIszKeZ5B8q/SjfbsrNPN5jDgqpIUfU96rz3UsxWBF2xqPkAXCgetcxpoWbm+jgJ8t/OmJ+aVx8q+yis95mfJCKuTkkcfzqJkZmAztGeAep+grQs7Bi6uV+TGTITwB9PWqJEsIEeRfM2tjJ+Y9vf2qW7maV447cxcZHmep74FPuLe5ljVUjSKJQdmeGY55J7n8adEsECSiBZ7mThS237o7jPQZNAFFo1hj8yeQ7znj/D/GoEiaYb2Kxxk/efpVuWED98xVmOcE84x6Cp4dNmniE9wWSMnai85Y+g9/wzQBmxwmf5ELBB1JXrWnZ2BEDTsNkaYCAdcnv9auC28iARReWAD88nQDP8I681HNIGXy4lPlxtwW7t6kdz7fnQA9Ntr5YgUSXT/wCqUHhc/wAR9vc9agi2l5ZZpd8cZIaZjnew5OPX/wDVSsSkZgdykk2Wkfd8236/T9KWKJXJnnXZY2wCiMHHHBx9SduaAJZ45oo4Vbb5pXcR1O5ucfgNoovJJIjbafC4+8qn3Oev55P4U9CABcSKcsNyL6jsfpn+VUbCOW41mRn+URnDD+6MckfhmgDUeWGfXLS0jKiKBRuf1AOc/jxVTVbRg99KMH5yBn/aYAH/AMdp74F5c3SKF3lQoHo3OPyxUusPv+02sTZJSDBA6EMc0rjOcuYwtvCrKQVUM59c9BSQ25m3yyERomCW9fQD3roX0uRoTI2xN4ALOeSR7VDLpjxmJdhZVU4VR39T9fWo50X7NmJ5LkhlXg8YA7Vekt1gtpnzgkhF7k46n27V0+g6MJ3mMh2jbjkcA+vHpWXf2BMzLEJJIvM4OMZx1IB7UudMr2TSuYawtsaZo9xUZCAcY6c1A9syBSw5IzgfWu3j0Zo7XzLtGRW+fAGScfd49B/OszU9PdEUCBoSznryzZPp2FHOhOmzlVVBkvn6Cnb3lG3ASNeSqjgf/XrQfS5Am5mVSOoPXP0/xqssKs628YbrlmPGf/rValchxaEteS7SD5SuFHqT0FWtKkLzMpxuLDOe4OarXGDdGKP7sYwoHqOat6XGBfgz5WI3ARnC5IGCTiqJKs1uUDBclh8wPqPSmWJ2zrglUf5c56GtXUI1Uo6EkFjkY4wwyay5YWUNg8deOgYf/WoA6OxBlNvC+SX+T8ehFYU8BtjcIw2hZQAG9ecg/lW7pzq0f2iPKiOSOcFjzgkA9PrTPGUapcySQAAyEXBHseOfxyaAZT024SaFraX5eO46Y/w/UfSp9DX7PqsiM4QEYIPAx/noaw1nbzBIpAkGCM961raZZWWU5xjj1Hb8gePyoAvzlbe8ntbgmMMpKnp1OGx7ZANY16qwSlxEJeeSMgdepFb3jFDLaQ3EaklhggHnoMkfiOlYFjdJ5TCXDkcKx6Y9D7fyqSkXra4kiQI5UgjIjQbdo/vcd66q1u7aaGIQSSu5Tcwk4bHTPv8Ahkd/auPggMLCe2dthPB3D5G9DWzDfS3Cstufs6mVX+zRxAjd0Yxk/cY4OVzg135ZjKmFrqcPu7nNi6Ea1NxkdApyKWqtjeQ3SO0EqyBGKt2IPv8A59atjkZxX61hMTHE0o1IPRnxdak6U3FiUUp6U3mukyFopKCaBi0UnNJSuAuaO1ApaYhMUlLmkoGFBFFFAxMUtLijFILiUUUUrgFFFKBTEApcmgClAqrCE5pRS4pKLAGKKKcOlACc0UGgUAFBNDHimqaYC0UuKQ8cUAGadTRS0ALRQKDzgetJuyEMkwSBxgcmuY1u7nuf328Rxq21WByMdOPU/hWx4h1Sawtms7bctxdLsZwOkfdQe2e/tXHwj960qsGXG1n7bQOgNfmnE2ZfWa/sYP3Y/mfWZThfZU+eS1f5El3MrqqJu9PmPIH8hVBpAfkUhv8AZBwuafcOCx2jZEDgFj29PU0AOF3pjJ4Ucda+YsesRMpK5JXH8KDjPvUgV0gIw29zz7CkMXA3DluTipyCJhHHEdxPGPb3PSmIdbWsLSqZ3CNjJDLk4/A8fjWgbmzkb7Ptkh2j92sYwGPYnPU/jWa1xLAMKYiOpLDKk+w7ipdMvHedSNPsblVkDEvEw/DIIIBpDLSJcSkq0j/KMbGjaPA+vP8AOkmt5pCsEJLWoOSyfdJ9hWnPrU9uXWOSJGc8xxktj0A6njpyarHWrtoDGwQjBypjJGc/UelABawRpIhEKTvggBs7U9PqfanzFIh5l1eEy8gnBBA/uqB0H0rIuNSurhgvmMD/AHYMj+VEEcIZpJ4VUjnDSFm/+t+NAFySaGVgsMLtgYjQdvfjgfqajuma1hH2ny1wP3cEZyzH/aPYVWe+kLGKBkRdvRExgd8n/CobSJ5Xdny7Y3OfQdlpiJIVmkWWaQjexA57Z7fj1/CtV44pIILQuGhQktk/ffGST+JH+RWaGVnCo4wgJL46serf4VoaV5Fvm7mVj2hVu4UjnHqSR+tAFXW5WS48ncN5RE47AYAH8/zpfnhsZpkGWlZlVm6gnqfrVa4R7m6acn5pXLbv89hT9Qm2GC3G7A6A0ATpKHvWXAjQyc46AAEZ/Sp4JFluvMYsEIBz6Dv+VZyKXd2zgNGeAPXmtTSozBJHHN8nIyx6DBwT/I1EmXFam9ptiJdQIIbyo8Ekd+PX1rtdJ0CzmgM0kaKCRHHtBKuQfmP5YxUPhSzRrcx/L9q84wlCu7GB19MAV2M1v9iuIDbFp4oowkiOu0McfKPr159wK82rUadkexRpK1zndWt2s7TbbII3BBQgDe3P3Meh96n0zwtbXlqn2iHddA7CzjKnIzjI9fzrpH08XM1n5Wxmf94doycdh/P8q2bCzMEpWPB5PuuQeM1zSqyS0OpUk3qcLdeGo47IJGGDoR+7cZYY6cjrWVqPh0kja2VTHyiMKdx9f8969UnslIbcQ2/5uBgk55IrJvrcMSUQNjc7Ej7v+PA6UKu+oPDxPHtc0tEtWJiZN7HaqjBOK42exitop5SpSTGEU/56dP1r3TVNNjhtR53Erx7gxIyO/wBAPevO9V0gBN0rA7yWLjoc8gCuujX7nDiMP2PObKBxMA+ctIASe/Wr16ipeSKm47pGKY6Z24B/RqvyWypLHhCCZQCMex4/MiqyqW1Od2AxDGjhe3Q/413wlc8ycOV2HWKrc6KkjH5wFUcZ5GRz+GKzr2M/ZXG0g4zz7D/D+VXtJdBoEygMWiJkYA8Fcr/9erkNqHiUKozJGcZ9OMcfT+daGY3T7dv7DjYgBZYQPcjPOPzBq9qdu99otve8BhamMg9sHgfrUM0scemm2B3C1k8lcjGcqBge2Seafo1/t0ozSMCFZY40xkfNweD2xQByk9u0K7gCrIcMCP4T0P58UW07dHACqckCt7xFag3IniVQsynAB4IHUVz+0RHDMcOcc9celAHSWkwutJZXOXMpPPbgYI/LFYNxAFmkeIlcjBUjIB/CrNhdeTIsTE+XKpVsHoc8MKfcq4kdZSDMDgt03/X3pDILUXJIS3X5mXDBuFI75J4/GtzQSGV0Dh1K7k4wM919wfX8a5ubM5Uozq6cMCetXNKupILyAqAQsg+XGcH0+hrbC1FSrRm9upnWi5wcUbcqva3A1SHKgfLdKf41zwxHqO/5966KJg8asvQjIqjKsZQZAMUoIYdjmk0JmFj5Dn5rd2iJ9QOn6EV+iZRehWdO+kvzX+aPmMc1UhzdV/X4M0DTTTqaeOa+nPJCkAozSmgYUlKKXFKwXEpDQaTvTQBRThikNACUUUE0DHUhpAaKQrBRSZoqbDsOxS0AUuK0JEpaQinUAFJRS0XASl5oopXAOaSnUmBTuAlFLigigAzxRiilHSgBAKWilUc0yWAFVdRvBZW7XAVWKH5VboW7D+v4VcCk9BXO65Nb3E8kbyxmK2ODGQSZCwPIPQY4/OvB4ix/1TCtRfvS0R6OV4b29ZXWiMC7Zr3a371pX/1jdcnnOPTsPwp108NvAsKHO0n5R/Efr6UlpIbeB51JzjZGWPPPHGOKrMBEPPmXL54Uj8q/Km7n2SGsI926ctuA+UAcCo1zcTAIrJGvTnoPc01l3ktI53N0C1ZBQBEYhFXl9oz/AJxQAjuqNvZcKuAoHU/X/CmLJPIXhi3OzDBGMiniKNpEGWfJOzAySPXFStItqg3SFWLZbact9B2BpCHw6W4TNzNbWqAfeZcsfYDqTVy2tEW1ICzOmCSzMEU/iT+grOjknnlxb2xZy2SWOce5J4qxcQwbVk1LUGunUgCCEkqB/vdPwApgKbiGJDGhgTbzti+Yn6npVGe/leYlY0b1Eg3D8qcwdk2xRi3iLcKBz+JprBFyioZGHOB/M+lAALq6aMRmdivZQMD8AKgKSOMsAq98HipirKQGUM5P3QeM+hNTQQ/aLlLZSMFv3j9AMfePsB0pgRrH5Nt5jY3THCc/wj/6/wDKniQQ25Rd3zA5AP8AP1ouWjuLtpliCQrxEi9lHf8AGmwqGVgyqcnOM9F6f1/SgB9sCkDFvvSH5R7A4H5k/pVufa+9y4KxYiXPTaPT8c1Tt5C1woUhAo6kcDHT9antwkq5OVEjZPHGO3+fegaQiSGKN5FC+ie+ec/y/KqU/wAt8JH52jO0n2q1M3nXWFA2omAPpxVSfLOpPAK9u5xipuOxq6NHvljeTkMCGB+nb2rpH01Uha58o3CQwrcXEa/eMZO1gPoDWPpFuXSBEb5nwhyOmSP1ruLYi8vrHCZX7K0LJ03/ACkkfgOlc1SdmdlGnzIf8M9dRdUf7dulJtPLiI+Uu6YCMPcqAD+Nen6lbSjQpp0KmTaZRhSS7cHPt/QAV4npaz6Xr9veqm4abKJGxzu2Dc3/AH0m4/8AAa9+vgqeH3jhbdNdQLHbgDojsFViewwc+5rixK95NdTvwbfK4voTeHbJWuDNJGX3LgBmPQHGTj33dK2WheMADgxMc5wBz7emKs2VisMEUixIRHHsUAjORxj1qSSFgpj2oSuC+B1b1+lcbO1dDKuPMVYj5fKv1Jzx3NZupQMQYYxxI4zngYPJPFdFLAsAXerDJHvu9qzbhF3lyu45HHoCcY+lZ3sa2ucrr1pvj+yyM48w5lkJHT+n+FcD4rXyjwqyfMBlP4u3SvS9W8wxqPkUtkl2JPOK4PxHZviSRQBsUlnOcnv07DitqUtTKrDQ8/ERGsQI0fzCTeyHsBycn8KwdS2Jf3zxEuhtyiHpzgAf1rotYkXz5Li24jUjLdzz0/GuduGx9rdlwETauT3Jxk/nXsUnoeFXjeTKvhyIz2GonJysLlsdCMf4it6EpA0gmJ8wncoXnCkdPyCisLRQ1rBIzbhFIkkJwcbs/wD18VKbxi/mhuWKhsHryOPpxXSnc42rDL5JfOmDEqZWMqj0OQcfhgipdBtRqEc1kDjKlkHbIqbxQ2ySKZQQGUuOMdR0/PNR+Hf3MrqrDeycEd8c/wBaYiRZleJrKfgn54y3G1u/P1zWTcKHdo3QI2eQOu7uCP61b1ojzpOCkit5ivnOex4qvKsUka3Oz51X5vm7dM+5FK47FR4mMKvHvJTPOOlXL6dZp5Q3zOrY+XqwwOlP2jyA7qF3HDYOMMBwQe2Qc+9VrxcvIygqWAKnocgDnj8aBAgSfCeYM9Aw4I+tWbd47eQ7ZzJsO3zUBUexOeRVC1YGRJmXcVOWUnG71wamV1ebdgxyA/p6GkUjsNOdbixWFf8AWRbgTjryCpqzpigG4YDgy4/EAA/yrN0GQb3jYlLiUAhCODjr+la9sAiYCgAsT+dfoXD8lXpU5X1je/5L8D5jM06c5Lo7f8EmNNOadigjivsEeINFLxSGigBeKKSlBoAQ02nGk4pAJRS4FJQMKKKKBiCg5paKBjcGinYopXC4+iiiqIClzSUU2AvelpBS1IBSGlFJ3p2ABQBS0UAFFFFNAFFFFMQUoPNJTkoEDtsiZ+6qWAx6Vx+poo1FoFfzAsaeaR0D9WJPrkniuxuBst3mckBOemenNcRq16LydBAnlkndI20AMf72B61+d8XVuavGF9kfT5HC1JyILnN/eZxsgt4yBtGAMZNZlwxnlLs+YwfvHvV7U5xDCttCASDgnuT71UVzEAGA39FUD+Zr4890kgiZjnaU4GC3UD1xTiY5H8tAFROTkfe9M+3tTJVnmjPzHywcHJxk+p9v/rVIdqKiQqAOv3ep989KYh7rctEiwKSrFgBkEg9SSBzUDRiGXBRpZscoF3EH39KUziCPJx5h4G1f0pW1C83FfPk3twfm6CkIlFvqE3MluwjY8FzsjX6561JBbp5jedNEMKcMWwPpx6+lQC4kCruCyydQCOcCmi6cxgMseFYsBtG4k+rdTTGTXEoYqqE7VXoq4x+PaoMbH8oYj/v85Yf4U1riSRPLKoQTwAMfjTo0EYUBMtjJA7mgQKHDqIgd7fLGp7e9WJFS3UW8Ryzrh2z2HX8M1Gn7phJkZxnPoP8APAqGabBIyDIwy3+yOy/40ASEKJSiY2jofUf/AFqVXB3yx4IOMew9P8+tQrnYVJ++OQKPN2x7hjbjC+maLgPSJmEqA7Tn5jnrz0FWYmVLZm4BJ4z2ANQRnKZGFO38sCi4JVFUZBUZNTcu2g+yVjFM5yFcEk9zgZ4pNQj8mNdw6DGPQkVNtMVrZK3/AC1cHB759f0q9NYmb5Plw0gRc85JBGT9DioctTRQui54Zjklv2RB8sZygU/NgrvBFd1p0b2sOlyOVVo71gpA5O+NTz+BH51x3gy4+x69aS7SUuIDlOBgg7W/Ec/hXe6WEudcETqSmnusnzf89Aipg/QIa5MQ7M9DCpNWH+ItMj8Np5ksLGIxRySlhlcjnB9yDMh+q12fheOK/wDC/h9LKV5p4tQ+zXDMxPmCDcQxH+6qEezVd1/SrfX9HuY7kboZUZCw/wCebDBYfQ4cf7lYXwWnubW6g024wH2zRSseQLiICJ8f70Yjb8DXLz89K/VHW4clXyZ67ZymRvKurVBKF3KueOev8un1p00IUr5a43DhQOmKkMMaIrFmycKMcc5/pTmRApO8Hn+PjP51zS1OiOhTusOrR8Eg8EGsm4hVyzFPugYI7j+ta8ihMNztYnp0AqjeKQp2jrwfWsWbI5/UIiyqCuAoAzjrxXCeMYbl4/7Ns2Pnz5aeQjiKL1PuegFejX6EN0yAOQOx7D8a5PX1MaSsiBtwwwx096unK0hVFeLPG9dj8hBbKpSODDFs5GOgJ9zXPatG8szbRhWUgE8Zzzn9BXR+NMmGKJMmSRw7AdMHJAPvWHqirGPmO58DCg5r2aTbSPCrLVmYZAbNoUkASP5gT/Ee5qskymY7QCm7cv5f41JcI0SbAuXZef6/zqgOuBnA4GPautHnyOg8VzCSztEQs3l5iyTzwAR/Nh+FVtIYqqTKxysmPqOM/wA6i1ORpbMOMZDAe+T/APWNN087bZUzkmRhj6rx/KqEbHiCMCSVWiVZIwsiH+90Vgf0NYaM0EmyNd4+/Hnpz2P8iPatrWJ3ntIJzkFU2HH91gR/hWFjzrRU34+b1xQBchkjkhRHkbZkKFQZI9Bn2PeoC5WZpGG1Q/zKOhHfHvVa3LKxXac9Dx3qzKCWLMcNxv7/AIkUAC26rcvBkg53Kw5DDrx+GKbeqSIpguQcjIONpX1/DFPdyiK7RYeIDaVYjjP9KfYsJi1swRAx3oRwCSKQFvR73Cs7k7O7IM4A56D8RXXwMkkaPGTjA+U9V9jXE2kK2+qRSHfCsn8QJGxh3rd0SSS2u5dPldWZW3RlScFTzivouHcZLDV7P4ZaP16Hl5rQVan5r+mb1B6UgxjIJx70pr9QWqPkdhpNJS0cUDEpKCaQ1LY0FLjikGaXtQgEopcUYqrAIKUCgClpANoooNAwopaKQDqKKKokUCjFApaAE70ClooADSA80CjFACk4FJmlNIBTsAoooopgFFA60poJEpy8UgpwHFIGyDUyGs5TKx2sCHOeua4uYJbxvJG2GHPsF6Diu01FylpIynDAcZOBzxXIPEyfvjIEi3HAwG3+2D/WvzHiq6xuvY+tya31f5mSwESB13SXD5OT0X3ptqgQeew3HP3mHGf609HjkuGkkBwoz8gxx/nikblBlQCSSAD2/wAK+aPWBbiTafm+pI4P4UgkkJ3EBenGevtSnbnGAY1+8em78KjlkO47eCBhR0CimAOxjG7KmQnjAzikVmjjy43dh2H/ANemIoL8vhc8t3Prip/lfAJO0DaAaBDMylDIQeR/nNCJhfmIAz0H8qN6yFSd21enHWpkaJExIpUk8HPP4+1ADVG0s7JwQeg/QVZQsnzYGTjA9fxpkXlkb5N7PncB0XioLidmOZCN56kdFXsBQMLiUIMA5Y8lqg4UYAAZuT7Cmjli7/gKR2zzkBR+tIZM7qI1XBweW55PoP60qrvCr/CpOe5JNMRN5DkfKOma6PSNMDxy3EsexEUyYJ4AFTOVkXCDkyha277jEuQ0h8vOM+5NLrNqLe8W3HHyLkk92rX8MQ/bJpbplKxIuFJ7nOfzJIFV9et5J/EotJFBJnjEgAOAcH5R7AVkpe9Y2cPcGalESNOKAB1CDb9OCfzrpIbJLvT4VhcRyTuscbgdGxlWP/AgKzr23leC/kiCFLadbeMAcEbi/H6D8a7TwZaxz2FrGxVxjcdy8EY/XqKxqStFM6qNPmk0zmrKGK28T2iXWxFa/VwD/D5o2TR/nhhXc+HNPkXUpIHeTzJgytNnBDCUgN75WsPx7pk0P2mcKSoVLhigBYKGKZOefvMmSPWu18O39tfSaRrEHlCN3jt7oH/llIyfdI7EOvf1rGtLmimb0IKM3Fnf6DAYrGTTZ2LsiFIyxwGGOOnt/WuL8N2hs/HNvE0AiW7e4kilz92RRkHHc4ZQfYV6FZou0Sd2G2TIztHY4+v6Vk+LdHSOGx1O0URyWmoSXEL88ERkMh9Vfbj2rkpvdM7KsdU0dXp95Hd2ySuhSTcquu7IBzg4zz/Ud6tTrG24AfKMZBqDQmgvrBbuJDGLhBOqv2bGCM/571dKD+4Bkchj0/z61DRVzOMZE5AGOPTH+etVZ4kc4Unjn2rVmtSSNpyApyM8npVWZUPyhG4HHGP1rJwbNIs5yeOTyiWLKvUKR1GfWuO8ZSOtubeLJnnIiix0y3f8Bk/hXok8GUO7awTnaTgYrhtc2/a5LzyQBHuigU8Kh43OT+Qx1/OimrMcndHluv2kME0KBRsiYbARkscnj8gK5vUbYQf6XOgLMCkcQGNv+e5713OtaYRO00ku+Yphdw3bQPQdATXAa/cvdT/Z1kAy2GYDt6V6tB3R5OIVjnbktNKWPJbgn61nysyRkdyentXQS2pCshACjkFuM4GP6VgyIVccHHqa7oyuebONid2LWzxr12qcjuQKW2kSORMFvlCvz7dagjYCGQZO8bRz6ZqRBmYqSF3jbz0Ax/8AqFWYl2WYNBErsdpQooB6c5H61QT51Yknn7y4+6f8KdeEiBWIwQv68f4VG0mJxICdso59j/n+dAMb50m1kld2UYA5qSOUoyqcFDx8w4qObBIyoXI5I70iKWhcuDiMfMf5fnTEWY5JGBEJ78qeePQ+3vVmBHYB1gXbEykrjGV7j8KzI3dZBJG7A4wcelaVnenI87cSp55wGHekUjTMTzyROBH8zBWD/d3Djken+NaFkkkrRTL8rQqIpWfqdwyPbsMHvWdHOsU8ciruiaVdihuMAcAmuga3g8xJgrcEuAW9j8vvXr5VRnV5lDdWf4nFjJxhZy8y1Gdw3U+kQqw3J0IzS1+r0ZKUE0fGSVm0IetIaDSGtSRpop1NFS0MUUtJmjNCQC0UnWlpiCiiihgNopTSUhi5oppoqWMkzRmkoFWSOFLSClNABRSZoFMBR0ooopgFFFJ3oELRRQKAAU6m96cOaBAKUUUo60CZBeKSobGdh3AD6f8A164PXN8BW1GB8xPBzn8e9ehtyrKehGK4TxdhtaeON1fy0GWIxhmAJBPt/Svz/i/DctSNbvofTZHWTi6fYzoA0amFSSWXDj69qbcFfMwsoAzg+v0FSAKjAbixPOAOvHrUQdRM4UcA5Y9foK+LPfCQlR8w2nPPt/8AXqqXaR8IOD0yM06UtIwXBJ69egoR9pKrgAd/U0xMfuWNixwxPAHpQ3zMUT5mIxwOn09qZtQsow3A575apGYRJhScnk//AF/WiwgJIxHGAWPy564+lLHGnm4mLYPAA6/X2qFSQ+TkEDt1zT0IBJOM+pNAyyHAiKDoThQO3+NVmAP3ucnk9MYpy7yCqli3r9e9IqZfknbnaCe9IZGxKnaMgg56d6tWdkSvnz7hGp545PsPfmpLW0RglxOf3WeAv3m/D+tXDxIDzjJCKMnB6jFA0i34e0j+0NRIKlYIsEqep54X6mup8S26R6bHpqKqzzESTkdAnOFHtxXOaddy2MO+OZlds7drDOemTj/PJqexvpIbtrkSK0icp8uSD+P86ylFt3N4TUY2O20TRhaaPFcyKkUso81Im/h7b29ABjA/rXMWMcWo+OriaMM8MQZl3HLOdu1c+5JJ9qjvvEt7K8gmlDLIoD55HHbHX+lZXhrXF0u+nugqGSXgtJnjkngflUKk1d9WautFtLojptMiLf2nDI2ZZ7tkCqMhdpAz9Mgc12Xg608vToUmx+5JdFbgeWzYYfVWyD9B615xp3iIwRTRx28chl3NI3O/JJOc9q66x8SLPpK3sIRGtm8ySMHcT6sR6EcEegz1FY1KbZvRqxudd4m0tdWguYJCxjlsXhVuAUVpEwx9fu5rC8JCO2vW0+6DRrqcaszjos8fyv8AiGXeP+BVesPElrd3LujBY5LTbgnLbyxyPf8A/VWhDpjXMuopAwW9juDf2JYYAkU/OmPRgfyesdYx5WdTtKSnE9B0q9Z7VHfMcn3XHX5xwR+Y/Kt6YxSR2VtIQ0TXIRh35ikyf1rlPDTWzFZoZT9muSsqq/8AyzYjG0+nYfUV00aMl7bqEXchL4P0xn9TXFezO7luix4X82zspbORRutpORuB455/4EPyOfWtqVUlCMo3ITkfN7dvSqEEeL6eYgYbG4Hp6/0qdlYt5aDauCVQHqO4p3uZ2J2VSPmIGVI/PrmqERBeRfMAwM+vXjgfTNMu9QRYc/fCABsdvzrEGoIm994zvK+YeBxxz+tMa0NC/aOHLMQ2FwBn7x7fh0rl7q2ikQsyBirEqTwOT1/WpdQ1D94ZpZBGO4cHPHbHYd65/WfE9jbxnZeQbmGBlxnPWrVK+xDqqO5jeMbZYFfymH2hh8oC5wcdcflXkljaPC88YVwRuCSvjOepP1PFeian4tsbssgurZDnaUV8OV/iI+vT6ZrAvJ4S817EI2UNlNh5wVHY9RxXXSg4qxw1qkZu9zA1u3QWEcsa5MiZJI7kc/Xg1yF3AzRj5doCj8feuhutRZ42tnGIwcZGQD6cdqzLu4jO9QuQD8q57ZyfrXVTi0jhqSUmYWwgTA5KhRz+I6VICqvASM7WwfcetWXjV0YxEHgjnjvVHJaIKOqtg+prdHM0WL8YaWEndtIAI6dM1UiZWIRs5POfft/hViQtJuLD1XP6g1VmCo/ySZz3HamSy4vl+Q6TKd2cIR1UH19qhjikKyIriUAdAeR+Bp4CtAhU5OMsPQ+n9aRVDEy9mXGfegRA4ZRkgq3BI6YqRWLMr7iTjkVHKBgqufxotXVHVpULqAeAcZ/yaYzTjkeOzj3HchY8DqpGDn9a7qFjNFGxA5QZI75HWuMs4VmENqpbEjDzCBnjHJH4V1OhK40+HcTkLj9a+m4VV8U9Oh5Gcv8Acr1NBFxkAcE5paUUh61+kxhy7Hyrbe4h60Y9qD1oHIqwG4ox7U4ikNIBO1Np1GOaVhiClFLikFAhaCKPxopWASkNONMNIaENFNBoqWXYlFOxS4FJWiRmANKelHFFMBAKWijNAAaTFFFABS0lKKACigUUxMKUUlFAh9ApoNOBpiElzsOBz0rjfEdibV2nZfMaQ/MccDv/AIV2grL1+1NxZTYCswG4A+3Jr5viXA/WcK59Y6o9TKcR7Kso9GcK8nlYyuH7N169aglYLnGfmOeOlSz7pST1PWoG4Owng4H6V+XH2A2IFuCcCmj742nJz1NSRrtDjqRz+FNhXMbngnHr0piHM25g+QBz3x9aeiJI65yB1b8v/rVEUDKOcZPPFWF4Qjn5upbgdaLjRE2ATtU5zg5p0SjlQwZt2FHbjuac20JiPnOMc5P1olOzMKgKzN85xz7CgY1dwLAFiMnPvx1qVI2lWNyO+FT0HqaasU8oEUYJZzu681tWtnIji2EZMo5kbOVX649KlysVGLZRQSb2Z2AJ/l2qWRQGCtId7AZYHOM+vtWne6TcmMLEhAYgDCYJ7Z/Gtiz8JtHbFrmcRLtBCspDD2xjn8KzdVJGqoybOcgjljiLCIKhHDblP6dqhuCzEKJMJ34yK9Bg8FSzIvlbkUKNynIx+GK2tO+G8anfKc/LlSFxj25rJ4mC6m6wc30PHcSJu2KMtxgiq/l3Hm7iDjOTx0r1bVfB6pdNCpceU2CFH/fRx044H1NRw+E4JSQzEjcw3hP9ogfy/lR9ZiH1Ob2PN7AqTmWNTnJHsfqKv6dfSWk7sIyV5DA8EjuCPT+Vdc/g4xSssZ4BPboeoIqtP4ZuAXaPy8ZAyDyG69fQ/pS9vCQfVqkehTji2Ml3ZEeQwJUnnGBkjHboRXomk6uRrNlemJtrhSRGfl+5jOT6nArnNJ0dpIDC0YjAbe5AztYcH8+Pzra8KWMkGEuM+WihVLchccjn61hVnFo66MJJnpun7YLxxHGv2eT5yCOhbqPpn8ifQ11Gms0k0vmljGAEQt95B6H169a5HRTJJGFJxj5SmOAp4I569xXW6akkCmBzubdkHPLrjjPvXnSep6i2NMOIyw3E54JIz0wRTJbrYCSQDnHHfjpTZYyAwxjcQcYycVk6vIViZVPCg8E0r2YrXRheKtY+yrPMrZGQrLj73v8AnXEX2u3Wn6dFbFi86JjcT1c/eOew3Z5HJ6DFa2tXNxI3lToGTzQcMvzDgnB9OQDmuLv4JWidyQ7yMdnOfmzycegyfxrqp26nLVcuhi+ItdvJlESTJI6csYyeM9Sz55+g4965e7u5NpiwN7fNIVfP/wCoV0NxZyeXJFCHd2P3mGScdW9hWfbeHbmZiyxEIvJ45wen+Nd0ZRR504zkc4TKHO+4yCeBwBUn2q7BcJ8nQfK/Jx6jiuouPD00YIjh3ueFG0Yz+NUD4R1CZslD5hJGF+bkda0VWPUxlQn0Rz53yQlnEqsCB9Rz2qim7zss+AO//wBauil8M6nEoR0kOXIG45OR1qC70ie3lRjG4I+YjHOO9aKpF7GTpTW6MS5yjHY4AVSKjiPmSJIQNufmH9fzrS1G0lBw6YDDK8Dn64rO2+UOm0g8Zq07mbi0BDK20HnDEnPHI4qpIuWzjAPNXGEht1ZFAwwI9cDtn0qGVcgjPC8jPYGmQws23PsIycZqSHBikRlxk52j+lRW67XVj/d5x9amZXBldc7wM/TBoArTn5mX7wz070yFQZRg5FPk5IJznPP406H/AF6sSSDgscc0wsbGlGWK7F4piPkuo2M3XdkA47gd/wAK7O0j2Q+XzhOB7iuX0qzDxyyeWHDqTDu6kZIz7YIFdVbFjCrMAGIGQOma+34SoyUpSa3Wh89nc00knsSDpS4pKXtX3Z88NzQaWkIpjDPFJS4oxQAhpOlLRSAKKXFIQaADNIaKKACmNT2ptQxoYRRT8ZopFXJaKTNGaszDpRmg0AUDDNJTqKoBMUGlpuaAFFLSLS0CYUUUUCCiiigApVPNJSii4DqZMm5GBHUHj8KetKairBVIOL6hGXLJM871aGSDUXQJsVhgAcDgdazCpCkk8gnGfpXbeMLMzxLOgJ8qIrnHYYIH6nmuOuFLlCOSQd31r8dzHBywmIlSZ91ha6r0lNDU7pnG5eTSxxlYC2OX5Az6dabgMUCk5559hVqMKLpVYZXYx+ma4TpsQAKjDK5Y9PQe9K6byBjPdvw96dFC2/cBk9APXsKmbMjpCgO4sFK+ppN2BIZBH5s5AAy2SG29ABxirEGnNPMMKTnJwOSQO/4niu107wzIthC6gq0kIJkK9ASdw+gUc/jVjwjoyvrM1uIP3ShdrHnjqDj8RXNKukmdkMM20U/Behx/ari5u4uFbYEC9CAMgfjgfhXQWnh2eVftUgaJZ5CdgHJwTgH29vxrttL0OJZzOxLuqnaCORWjFZQNZ28DIynAZhnGBgAj61x1MQ76HoUcMkrM5LStGtl1CDzY2kA/eAMTjByqE+g5ZvxFdna6FCtwpLMY1xgDgBvYeg/nUllZRrcvJsU7lyR6DOAPyFW/7WtLDYkjNJN/CkY3MT34/rXNKo2dsKSRqWel26JGyxnKhtxJzkE06VApEexSc4G3kg+n1rKg1fXroYto7e0iUcvKNxx64Bx+tNgsdVnnaSbxCYiTgCOBBj881OrNLJG4uh28odzbL5rY4HJz/CP5n61zd/oyW8QTA3FuSo/pWg8Go2EfmxeLI5ZhkeXNbDB9sjGKwtR1rWI7t/ttrbXMIH+st3wcd8Bu/wCNElKwoWuZ95prxTkjLLnrnrVWO1cINwBAOMEdcH1re06+s9Rid4X5Tgo4w6H0IpRGqtuZQxOc1FzTluYS24bcfL27hubB4JrWsbNDCqqpHOcHtwP8KkWEM2FjAHatTTbba43KRzxzUubQKCRoaDp+yQSqN2Mlsjgk9f0xXUW8SMVZlUDtntWZpCMpAxwfeugsIQckDBB447VKldhJWRBcKAmCxHHODn9aw9YZArEDkgjkV0OpY+YdMHtXNapHuyc4wPzok9RQV0cHrNqwdiu5QCGGzPXnn9azY0T7OFcIQQMDHPFdFrDrEWU8bj2Oax47Z2yBg4Y8HtzVRk2HIijDp0cj8Qg7j82a2IdHklww2qD12jvV/ToNigtjg9+tbEdzZQL509xHGgznc3f0qnJgopbIz9M8JQySB5Szgkfe4B/GtSDQbK2twI0TIyQfY5ptp4isd5WwsL2dnH39oVM/ViM/WpdV165t1WSXRJ0THDRyLJ/I1fvW2M7K5ymtaLG8rz7ATGS8IwcMSe/r6VyWo6S805ePIm+b5yM7T3J+vpXoLeJdJvf3N00tq+QQksZXP41HdQWUiI0G1lZhhoxnIHPaqhVaJnRUkeSeKdKWwhMS4eOPqWH8R689xn8q4C/011llCjdhd3HOen+Ne2+I9Ke7lkB8wKvpjOa5W50q3hutNa4RGh4eQH5SAo9frjiu2lWseZXw+uh5xJaTQXjW5DdM4HPGKzd6NBJHJneHwMdcc9q7rxNpjm8S6jRxHIcAgj1PHTI49etcjqMQgn+baRngsMEfj3rthJM8+pBxKUbLFEFIBycA9+tLcbvPG2Q+7CmzxqrqXYqoBIGPToKkhVXkBkPHTIGe361oZFYFTMw5IxnmpYUJyByT0+pphTbcuvBxzmtHS7Vrm9EiDCK4Jx061pSpupNQXUiclCLkzq9EtVtopIzlsE4b/PvWoq7VC+gpsaKAxHc5p/ev2HLsIsLQjTXQ+HxNd1qjkFFJmjNd5gLkUmaDSZoAUGlpuaKAFNGKKWgApDQxxSZpAIetFLmkNIBM0YoNKKTQBRSZopWAdS0YxSZ5qwHYFIM0ClNABRSZozTADSU6kNIAFLSCloEwopQKMUxCUUUUAFKKAOKWgBRS9RTaUGgkjvIvOtpIuishBrze5jWOeWIbgP4d3WvTGG5cGuP8V2eyY3aIAuQuPVsE18VxdguaMcRHpoz6DI8RZuk+pzkabJIwMcHJzVr7pkkckA8bj9KS5ALIpxkAFvrUtwEcJGoP3ctn1NfAn0otoCUSToFyce/atHwhaG51yBmU480Hp/KqUm9d0S4/hbA9h/Su3+ENp9o15DnPlgknHQ4HNZVXywbNqEeaaR6TFo8Z023tADGzhkkbbklB1+meB+Jqz4d0Pybue6ZSnmEyIyr9FwfY4zW3HaBZcBSC64zjuTkn8sVtW0GyJY+GznJrxpSZ76gkU2jQR8/ex/kVQlQluACO+eOa22hfbtK8j34rI1dvs0bM2MegNYc12bxiULt5fKMUc6xKTh5B1x7VlnUtK0MPI7q8hOfmOc+5PesbX9Uv5WMduhjjIOGPHFcDqUdxcXGZJJXDc5AO1B64/rXXSo825hWrcmiV2dxrXxLiVJRAGJI4AHX8a5R/iT4onWWW0comSxP3iqjqR9Kt3PgeG58GXdxpk/2i6TBjVW5IXr+J5rz1YvMhMblkCDbycY9Riu6nRpWPMrYive2x1F98QfFbsmdVW5Eqt/rFBBGT0+vHofyrT8L+JPE18jzLZLLFH8sgBOBkZzivPLS2WB2k8zPbFe8/CSzs9H8KT3uqyRQSXRDLG5+bAHHFOrCklsLD1aze5zo8SJBeoJ0ktbhQCDjBA/qvtXoOh3kGsWCyW8gedf8AWBTwB61zGvafaapLNPFBOoAKoy25YOcHp7ZrL8C6P4p0Pxha6lbWU32PzFW5VwApQ98V59SnBq6Z69Oc1uepR2cioSU+UdzU1mjllDA4z09619Ylt5Y0a2yu7+Ej+tVLeBlhGc5B4rgqSOuBraaoIAAx/Sul0+IDDHtxWNoUG/hgcEdPSuot4lVcDrUQZM2ZGqrvJ421zOrbkU7fT8q7TUIxtJ28Y5rkNXQNOY8ZX3pt6hFnDanGXu8Jk8euQKmtbKRFDuMFjzkYrVayJmLnHDelZ3xc1dtA8JQxaZEwu75vJEmCfLGCSx/pW1KPNoTUlY5fxZ4vh092tLSaNpF/1kr8hPw7n2rloPGtrag6hJDLMTwZ5UyzHtj0H0rD0bRXu5zJdsrrGu+QySg7ueSM/XpXQfFnS/s/hiwurFUa3iYbygyBxwa9KFCGzPPrV6kdUFx8Tb6Hy54dOcxyPiF2wFzx6/UfnV0fGKWRnstWiEcsXyqVUMoz1NeVajcXN7ZLGJNi8DYO9UIYpzcF7glnk43Gur6tT5Tz3jK3Pqe16V4/0ue5WG4MciseGKlcA/XrXRXAsruH7RpN35MvXKHg/UdD/P3rkNJ+HsV34Rtr14vLmZSwfoVycrx3rmjcaloV4YpJtoVs552sO/0rlnh4/ZZ308XJL31oeraVdvMzWt9GIp/vBgTtceo/wqrdadE07vEFdww2s4yAQeo+mTj3rO8N+JLTVoltroiO6XmNj0/D1FdZbwiSFRkA9M+9czTgzpupq6MDXdAWXSUYYBTJz94nGCOf1NeQ/ELThBepIi7IsA8d/pX0GbZWR1VAgYFT2LV5d8XNP8vSY5CpHlEgkL+ma6cPU1RwYqmuVnjt4dwDAZHoaltJCEG1RkHpinum5E2gHK546U3YYrYupGevNemeRYgnYtdHb04/Our8H2UaRGU5JbrntjqK5/QrT7Xdxh1YoW556HFd9aQJbx7EUAV9Zwvlzr1/by+GP5njZvilCn7NbsnAwoFFFFfo58qIaSlNJTGBpKWkIoAKUUAUUALRzSU4UANPvQBTsUmKTATFGKO+KKEAYFBHFFB6UmA00UGioYx+aTvmgGitBDqQmikouAuKKO1FMAzS00ZpwoATFKKKUUCYClpKCaBCGiilAoASlAopaAClFJRzQIMc1R160iuLFg+eG3cewNdB4f0TUNcuzb2EQbaMyOxwiD1JroNU+H12mns0d2sr7cH93gV85nmbZfRpyw2Imk5Lbex7OWZZja8lWoQukeDIp2MSvzfdOexNOVWaYBjyTk10HiPQdS066kZ7ZhEerryAfeqWhWUt9ORApYI+GbHQe9fl0pQu+V3R9f7KadpKzK3lhkLZUkjYMdjxzXpvwUgC6nKAOFQkt6muAu7d7S6COCqAMVyOo7H9K9Q+B8G5bmXtgcnrXNiHemzpwkX7ZHrMUO8KxPAUkD3xWhaplAxGMjioosbFGOAKsrJhFAHQYrxZM95IUxbgSvPoMVj3+nx3G7eA204welbrnKgAkGmfZy3UflUJ2NEzzrXPDwlA/dkhTkKp4+vvWLL4dSQO5jxIOB7CvWrixV1wfyqo2kIxwE+XGOlaxrtIThFu55pYeGNTEZaC5SMdlY/MfqRVU+ANOvrprjU1tAx3NI8bNkntnHU16j/wjydQz/hwKIvDdoDudWfHZjwKtYiXQiVCD3OF0Xwd4Ns1do7H7U+cq0UeGHsS2f0rqLTSoFVnh0y1hTIZd6GVxj3Oa6ix02OJVRIlUHIwFxk1oRWsagApnjkDvQ6spbkqnCGyMeKK5eL94i7TygCAYPqAKne1T7OUKqZDg8duK2CiKVVVGKrywlRz1rKpUsrGkY31MeWDfIuRwvXipfs+NuQeO1W1jwwJ6ZpxAzz+FcjdzZMv6PEFUYroIugA64rn9NkAfHIxW/buX4JxirgjOZV1BTsYEYz15rmdUiwdwAIBrpr88nH0rAvFDKQ/YUnuOOxkyWwC7xn5h2HINNvLKC9ijFzCsoQdGGRWgIyF2nsOD604KrEKwxTjKzHJXRzuo+GtIlZCdLt3x90bcY49a5XW/DOliQRSW95FAciSNJCY2HuvavT4kyRkZKnHNRXlrHMMFQCOhHX8K7IVeqMHFbM8M1X4W6FOFbTNUePPJUOFwPo2R+RqmnwyOnzLeP8Aar+KIhlUqoU+mQK9iv8Aw1aS3nmmD5jySvy81GPDrRI8aysynHBODWrxU0ZrCUm72OGN/wCIZrZrZrJ4VHyhVxj2wa5eTw7e3N2ZLiNAM5zgkj869auNLu1kwjEVBNpUo+8pb14rNYl3NXQi1Y8li8H39ld4sp28rO8L6euPSvRPCRmS2VZypK/eYjmtu1sY2OCCSBzxxVoWAXcYwoz1yM5pTrOe5EKSp6Iia2LMr+mc1xPxVsRN4WudyFgkgOR2zXpDLhcEjI71ynxAhaXwxqKqP+WRbA9qqg9UZV17rPmRYzGjJtwACMgepqpe7haqrZ3tzn8K2pVJgZjjOc4rNsohf6gI4+VXk/Udq9+lB1JKK3Z85NqMW2bXhKz8uyDSJlidwPpXR1DbxpFEqxjC44HpUw6V+w5Xglg8NGl16nxGLrutVcmLmjNJS16Jyi0dqKKAGmjNKRSY9aAFApaBRQAUUUUAFFFFKwhp60UEc0Uhik0h6UUGgBpFFLRSsAuKOlLiimAgpSKSnU7ANopaMUgEpRSUoFMBaKKKYrBRRQKBAOtLSd6O9AC5ooFLzQFwooqWyiM15DEOS8iqB9SBUVJckXJ9BwXNJJHaWmsT+GPD0NpaxILiYb5dw6sfX6DArZ8I+MppFFrrEKP5pwsqjAz6Ef1rn/GNtKuqqjrgY+XK4zS6PCpvIYiMEV/O2MryxVadae8m2fvGGwsMLh4U4LZHb6ho9pfRswVSHHQ9K5Q+F7eyaRoLVF3kbtvH5+tdRIbi0gHlBpEC5YAZOKnglWaBXIByM1xqbjsRUgp6njnxE0cW32aXaBHvCgZ/hGOvsa674NQxJpU0gH7wyHOD2OcUvxOg8zSGKhQnG4nvjkVY+DyqmhsSDudtxOOvpXd7TnoankKlyYjQ9DQ5VQetWUTKKwJ9sVVh2kL6d81bVjjAHArgkegiyqDaOe3frVmNDgDFV7duPmGD1xV23+YZHes7lpD1hGc9/eniDnpyetTJtzz1+lTFfm7bcdhzQgKTREHBHAoEWXwQSaulQWHPtSADoCfqatOwrFaOIBSRyQPXj3qRAfujLZ5qVUByBn60+JRncSckU+YViARADLAk1Wuup71oOMZHrWfPncRis5FxImC7AxGSKgXJJ688U6V9vAHOaSJwqYPzE1FimXLDKFe/GDW3bv8AL0rHt1Y4rSXAANVElhetlicHise55Yn161pTvkkk5rLu0YnKnA70MFsQt8ytjjmliOBkc49qiR9pKn1p6sNxGDjPSpY0y/GgKMeQe3vUZQkkkcVJbOAcNg8YPFWig2HfyM5x6VcXYhmcD823rginyInUjr6VKYhgnGM80BcrgEEdMVTYJFCaBeoHHrnrTHgjKjcBn2q9ImMZOPfFRmNckAkj+tRc0M2S0VcsMDnHSoSjDIAzxxWwyAAfLx/Kq8sIGWA7UXIaMyRP4uvtWR4mhE2j3iYyTA4xj/ZNb0w2khfT0qhep5kTodoDKRxXVR3Rz1dmfLEGm6jqCCDTrZpX6MM4x/8AWrsPAfw5uw5a7IjkfqyjNdL8I9LKm6u2cENM8fPYr6/gf0r0CbUrLSYnubllVVHAUct7CvQeY1sPVvRdmupx0Mto1oXqq9+hwWufDya0sXuNPumndF3NDIuCR/skd/auHAxwQRXfXXjrUX1lcW8UdvnaE6t+Jrk/FUKw67ceWmxJCJVX03DOPzzX6Jwdn+Ixs5YbEu7Sun+dz5bijJKWDjGvQVk9GjMzRSCnCv0A+MAUtFFArBRRRQGwUUUUAgopDSd6BjqKTNGaAFpDS9qaeKVwCkNFIelFwAUUYoqB2JKKCKKskMUUUUMAoo5opbgIaTJzTjSYpjFFAoFFMTF4pKByaXFDEIKXFJS5oAKXNNFLmmKwE81qeE9p8SaeG6eep/rWVVrS5vs2pWtxn/Vyqx/OuTHRc8NUjHdp/kdOFkoV4Seya/M7rxl50mqKzDhRjk0uiQ+brNsF+UkH8a0vF9ukl1bXH3kfHToARxUvha0dtaACjMKMTntX86bKzP352cLo27+IrDsXjjBArDSUQOIxKM9cd8V0xCEt5x4U1y/iS70bTI5LqQuXUZAHUmsjkasU9XtjqVrcW74LuhUA+/enfDRBb6KYsEujspz7Gqmn6pBfWtvqNs3yTDBU9VboQffNXPDIa31K+iUFYywdR9a3pSfK4s4K0FzqSO0s2BAPXngVbUnb1yc+nSs+zYKgzxziriMQo+bv07VjM0irly3OMKBkk5xnpV6A4bkdeMVnQOckgDrn6VfidRz1PTpWJokXozxx68Z71LukCnGDnpVMOBjb+ODVlG2r0x646U0Fh6ljzz7+lOQM2AeD9aaCVwcdPyFSr68ZP6VRJJHyefzp69MnHH5VEmCc4OaA5AwMAZ/KmLcdNgqp7H2rNvXCndgYA5rQmDYwCSSuRxWFfu8sxij5Pce1S0VEa7AspzndxS2yb3JHAFSG18qH5jk4pbcrDDl8Ag4+tIo0LZCWAq+qsx4FVLR0kCoW79a0YJljkGR90+tXGNzOTsVLqNkyuMZ9qoTjIbJz9K29RuLdskHnHGKwZZl5y2eOvrSlGzKg21qZEoZJmU7vWpYHy455qYhZXLLyR0qGWGSNkkUfKTyKmxRqp0AzjNWNzFV5PuKq2vzDPp0NXFACg59vxoIbQwcfKfQk9/pSnHlbsgYFIOVxz1oYKqgHJBHTFMEMyGUED6f/AK6j9zUjYCelQtkZ5wakpAxBIA4B7VWuOuDgexNP3jcPm6etQXEgZs8UAytNkE5btVG8cRkHOeamumYqwUlSeBnoKpXwzbzZPy7Sf0rpo7nNVWhwHgcvBozsjAied5UPTuQQam8VWUsmni4Zs5YY7AVteGIIzDHG1uwVRtJxgj3xV7xbaD+yHjiBADL/ADpuV53OmjDlikeVz2RW5hyCMsOfWm+OU2a0sZO4rBGD+RrfvrYpfWcJAz5q5rG+Ii7fFEqgHiKPqMdq+04GV81f+F/oeFxlplyX95fqc5ilpaK/YT8qCiiigAooooEwooooAQe9LSGjPFIYGkJopKQCg0Hmm55paQBRS4pKYBRRRRYB9FFIaoVhaKQUtILBRRRRsAUUUUwCiiigApSaSigQUUClxQAlLxQBR3oAQ0oPvRikpNXA9R8MXH9u+FRCzE3Nv8pxyTjp+lanhiQ/b3lAcMECMAe+ec1wXw31dtL8QRxu2Ibn92/sexr03w3beT4k1ALho5FVwPzzX4XxRlby/HzS+GWq+f8Akz9k4ezP67gFzP3o6MXXpY4o2O4ruHT3rzDxfK01q4+97GvRfFsMkxfDbVB646Vw+tRqtsYsZbOSSOtfOx3Paexl/C6xubidoAubcnzJATwMdD+PSvQDai01YyrgebGAR7g1H8PbFLTSZXKgs6rnA56k4q/qfMkTA4zkGnze+cVVaFyBg2Mk461bickcA1n25+b171aicB8ZOKioiYPQ0YX27lIHPTFWInbHTGOtZnJcANwDkMB0qxHLluwz0waxNka1vKCQeSM9On41cSYHAAPTpjisaF2JG3nvzWlCCQGJ+lAmX0bPIJwe1SpkAADA/nVeFwGBJ9jn1qynAJUDHHequQyRcjtk03lsADkdcCkB2hiMfWlztUEBiT/OmgRFezhItwbLY7Vm2bhy0z4DMcsc1JrUuy2kyoGeT7GsO3vSsBUMP8KGaRVzdvZ4RC3IBH61z95qiLEVDZ715X8S/ibc6JfNY2lmLmXGWLsQq+nTqa4DT/i7qn2zF/p0MkROMQsVYfTOc1vTwlSouZIxq4qlSlyyep9O6PqDOiuGwPWtOS+2YJPI9+leX+DvE9peWo8t5ASM7JBhx9R/hW7daqcDDHBHrWLjKLsdCtI7BdSGS24E9Kyb29CnO/aF6ZrCtdTDrhmII5PvXKeOfF2l6PFJ9vvNsjfdgU5kbjsB/M0Qpym7Imc401dno+lagkhxuJ561vb4XgA46da+XNO+MJS88n+ypUtycZWUF/yxivavC/iSPUNPhnjbdG6gr9KurQqUviRnSqwrK8Gd1ZOFYoSBjoeuRV0YJwc7SKxNHuluLiQY+UKMEdetbG6Q4557ZrOwMc3yrx+lH3myR2xmkcjHJzjp7U15AsQyTn27UmNEU7Yxxgd6iZlK/e3H0qVzlcsapTtgnnp19Ki5dhrn59p+tRS52nJBA9aQvzkADHSqtzKWVlHfimhMgnfgjODng5rJ8R3/ANh0S6uVAZ0j+VTzkk4q3cuD82fbmuf8SAXVkyqCBGyMQB/tYropaGMleSRreHb95IVmeJVDDkY9q0tURriwZChw2Dn8awdJuY4olXG48cBa6dA8tk8p+6ByalHby2ORfT0fxJY2+B8gLkj3rznx5cC58WX8ikkLJ5YPrtGK9V1CeG2tNW8QEKqRrti9/pXiM0jSytK5+Z2LH6mv0Xw/wkpYiriXslb79f0PjeOMUlSp4dbt3YyijNFfqh+bhRRQelA7CZoJopKAFzS9abSigApKdSUgEoIoNJmkAmOaBS0UALSGjNITQAE0U00UrjJjSUGkpiClFJSigAzSU6igANJmloqgClFJQKBMD1opc0lAgFLnmkooAdRSA0ZoAWm0uaTvQA+NirKykhhyD6GvafAd/HqH9n3IbLSRmKYA87h6/jXigruPhVqLW91c2wJJAE6L6lfvD8jXxnG2XLE4H2yXvQ1+XU+o4Uxrw+M9k9p6fPoem6vbhZ5VZSVOTg56151cWrzauYvLZwPmVcE16nFcWWqWoljmAYjgg4NZ+kR2dtdXIZlkcsFLn09PpX40nZn6m5e7qctY3TpGUR1XaRvX/PStS62uqOvrkH2NO8R+DTdT/wBoabeLFKfvDsfY1CY5be3t7e4dGlSPaxXpkHindXuc1TVaDkYjbz0q1ABnp+VV403R5GcGp4CTtI6etEzKJahbg5yDip4FwQevPU1WVuvzdTj6VaiG9sZ6VgzZF23Uk/LzgYGavQSBeGyB2rPgYowIPNTqzKSzc57UitzTgCM4JPUdQatxRoB94Hvg9Ko2wGwHOARVpHAPyncTTuS0SgFuMhffNOB2rksRntSZ4Gevp0xTGIyBtx6Yp3JsYfigs1q4zkkdq45dQQR7JG2yDhhXoOoWgnU5H61xWteFvPmd0Yow+6QTnNO9zem0lqcD4r8L2Wq3hmYgl+prFsvhppYuVuX+coc46CvSIvDVzGCpuGcj1pyaRPGQDltvY9K3jVklZMidOnJ3aOTvNPjtHhljjCLHyrrwfwq9NdxzRqwfOR0zWxc6ZO6bWRW54A5rG1LT1RgpTaT36Upe8EbJ6EV1dMqFIJtrvwT3H0rjPE3gqPVJhcu7eYeC5PJz616To3hlJXVS3Q5GavPopiunWRgY1IwR9O9XCTp6ozqQjU0keRaZ8NFt3MjOD3BNeh+F7VdHs1gJG1VwOa6A6BcsubaVUYdC3Ss9fCetT3Aae4jWMnJWMEZqKlSU3qzWnCnBe6dZ4VJFi04b5pG3Z9h0FdTCwdFJIx/nisTRrP7HaJCAdqjHSteBuMHj0rnuTJXJJ+SFGRUbMzDAOPp1xUzDksD16io3Vckkc0mxJFd3JQhgSe4FV3IbPPFSuAWPHuRVeQ4bcCBz2pFFS6YqxAIJzzg1Sll2qeOQOtXLgjYSSCcdTWNevtVsHjGORVJEsqXkxycNgYwBRZWb3um3Y3qgODg9Xx6VQmnfftI5J6961dAt9RufvwtFbgEcLjI9TXSlaJlDWXoVNKCicKsZAHfvXZXaeT4bd1PLg4P6VT0fRSbiQodybuGPUVZ1ORVlg00OZFVt7j0HX9ak6+ZSPN/i3ef2f4e0/QwQJJT50oHoOn615ca6H4i6v/bPiy8uFP7qNvKiH+yv/wBeueFfu3C+X/Uctpwa956v5/8AAPyPiDG/XMfOa2Wi+Qoooor6E8O4UUUUBcKDRRQMTvSijFFK4BSGlpDigBCKSlpTjFJoBtFJmloAbRSmkpDAiiiikMkFBpSKQ9askSiilFACiikNA96QhaKKKYBRiigmmAUUUUCF4xSUUUDCiilxQISilxSUAArW8K340zXbW7b/AFavtk/3Twf51k04YrDEUI16UqU9pJo1o1ZUakakd07ntN7o9/YTNf6W4ktnw5i3dM+lWtDhuLyN7h4XUltrZHWsL4Y+Jxc2sWkXTBp4+Iyx+8o/qK9HMgWNY0UADkYHFfz7mWX1MBiJUKi2/Fdz9owWPhjsPGpT6/gZNwkvWMnaax9QtTHmYnJ3cn2rq5l3tgcEjj0rD8RGOCwmd1/gO09s15z0Z0WbVmUrYjysD369qdjAKjj8ahs3V7dZFPDqCCKtRADIx369+laSOZbk0CAoOv41ZiGJc5xUEA7HoKubQQoXg+tYNGyZMg3Hkj8KvQptQEnd6H0qggdR8varcMpCjPA71JRdjB2Yx07+lTRcHp9RUML4wVHXuKesmMjluakCz5nyc9elMyeOmR2qLfjnPbtTnlTgrwe9UhOyJGX5T0BPWqV2c8KOnU0s0rFlyQDjgVCZCxJbpirSJciNkjZwpXI7YqAxfLyvvVyKI/exjPTNJIshbbtHAyDTvYFdsjtrWBoySoxjpiub1rTUmnEkaDCkgZPWupRNyNG8qozdMsB17Csy9t54XKshz0quYtQaDRohEIym0gjqetP1OzMku7HJHp0p9pDOZAWwi9evQVavRGzKyShgOuD3pXYOD3M633xr5ZI4PPatGJiIwRgFqYYEPzAgFjSqCilcA+4NIi9izGxyEyOlToDlT6jmqSucggc4zU63HA4Hv7Vm0Unct7hg5JqKQ7T3PSonmGwN+FIZSxweh4PNQUI/zKSQMmqz8J3yPUVYduqjFU7x8Z46D0q0Jsz7w9QO/rxWJeMW4OAoPPPWtS7kJJIIwBzxWHdvIV4Ylh2rWCMpMqxRNc3yYJwWAA9ea7eK7uRCY8rGAvBA61zXhmIvqSjB+RS5z69K61YYyvzp0II9q0qbpE0tmzGW61KJlgslZ5J249B7mq3ji8j8MeFruRp/N1K6XbvP949h7Ct68MdnC1xGVVUGST2rxL4i+IzrmphIpC9tASFP949zXu8OZTPMsdGNvcjq35dvmefnWZxwWEk7+89F6/8AAOSUHPOSfU06iiv3hKysfkjbbCiikzzTEhaKKKACiiigAooopDEJpOaGFAoATJpaQ0hpAB60CkpRQMDSU5hxTaAQhopaKgZMaaRS0VqQhMUYpaKAuJigClopDCiiimSFFFFAwzRSYpaACiiigBRSgUgpwpoliGm040hFA0JQDRRUgT2V1NZ3sN1bsVkicOh9xXsPhzxna6hCpZgkg5ZCeRXjApyOyEFSQR0IODXzmfcPUc2grvlmtn/me1k+d1csk+VXi90fQQ1tXIKSAKBnHrXLeL9ft2tpEaRfpnvXmcOsajEu1LqQduuaqz3E08nmTOzse5NfFUPD/FOr+8qJR8t/uPq6vGdD2f7um+bz2PTPBOpre6MmWDeTI0LY9R0/QiuqhG9ePwOP85ry/wCGVwYrvULMlVSQLMg/2uQxP6flXpVpJlFzjgfrXymcYB5fip0H0/I9nLcZ9cw8a3cuqSp+UEZ9amTcrZIwPWq5beATgc9qdDNlwpHQcEd68c9JGirDbw3Xmp40yC23APas+FtxK54B7VoK6hQAeMVBRMSQFKtwOgqQMCuQPrzVYSliRt7dabI22PJYZ6YpWKLHnnaQAMelNDOVyep7fjVQnADFufegzhB821R164xWkTOWrLrIAvOVJwcDtQvQjAB96oHU4Ijl5F6+vaue8ReK4rcHynAJOOKvccItnWX2oQWkeZG5A6Vg3GtvLl0cL2yK4y81iS4UyPJuYjIB7VVTUypAD47cn1qlTZ1QjGJ1N9qMrKGklxgjnOQa1NJ8RTeS0busmwEjcMgfnXnq6k/nPGyK3TluQDU0upzJIqYyW4PuD6Vfsy733OqvPEN1cTFXdc+i8UttqD4B8xiQema5BL3ayu5AUE5H+NE2shZ9qnOOTt6D2pOmPm0PSLLV45JQrnac4zWsCsrZU549c15KmsAyhlbmui0fxG1vhWfIboTWcoNGE4qS0O1milwWRiAO/wCFMj3gL1B4zVdL1Zo0IIw565qcSMD1XgfL71Bz7FjeWQL6daVWPUD5v6VXMm3Oc5qVGOwEAA+mahoaZI5bkZGcVm3kjN3x71YnmOQM4BzVC4kDAjPt7VUUDZRuGfbgdD1+lZtz94kHrwa0LhlwNvDDrWbdyCP55MDjJ9q6Kau7GE3YueGryCC+mjLDLBRg9v8AOa6RbyMsf3igGvAJ9Zuk1i4vbeVgHkJA9hwKuz+L9UZNsTBCRyetfTy4NzSVRJQVnbW+h5NPiXLowd5O66WO/wDin4it7fQ7jTYpAbi5XYFU8hc8mvHB0xUlxPNcTNNPK8kjnLMxyTUVfqGQZLHKcN7O95PVvzPgs5zSWY1/aWslokLRRRXvHkBSd6WigYUUUUAFFFFAIKKKKQxGpBmlNJSAKbg5p9NIpgIBS4pQKKQAwOKbg0/NIelAXG4opaKkdx9FFFaEBQaKTmkOwtFJg+tA96QxTRRRVCYUUUUCCiijFAwpcUCloEFGaKMe9NCFpDRRTAaaKU4pKkYClxQKDmgBKXNJRQBseDZPL8S2p5+ZXX2OVr1W2YhAR36eleS+FGC+I7HI4MoU/iCK9Rt28rcrHhW4PevyPjygo46M11j+p+g8KVG8NKPZmnHIOAc5J5yecVMu0EN2HvWdEykk454I+tWVlP3iQCK+BPr0XIXxhuvPFXln3IPUA96yFnbeMdPWrMcvPBzjn6VDQ0aO8uBjAOcDjmkl/wBWpznB7VBHICQcketPPU5JPGQaku4pJ2ZBwB04rnPEuoSQqxWTkHgetbblsbBJ9706VmXmjw3kbxzAsjnPDEE1UXqQeean4ieUMittOMHBrGi1GSeVg8uPUE1uax8M5YpXns9Sl8uQ52ljxUenfD+ziaN7x5p2DZdXc4Yeld8PZ23CLm2YtxrcMLFTIGcDGE+Y1lTalrNxKTaaTdyKeMkYBH416lDo2j20Ui29nDGxfGQv3fatuxsbNyFaJU9lHA4qlON9jqjRclueMFvE0cO99LcAjgck1nyar4iMmySwmQgjbkE9K+il03TI0AOHOQp7jryagfSNKilSVG8wMRwR0Jzn+VPnS6A8Pd6TZ4QNb1uWPy/7PnbH+yaiXxDeQYF3pt1FjuYyQPxr6EfQLPEkkDQttYhV6EgAHP61hXujwSTSM/l/L0UdGH9KHJLdB7HTSf4HkWla7FNcYWcZJyB0NbX9oFyCCSwP8NdTqHhHQ9QLRy2cecHbKgwyn1+lc5q/gmW1IOmanJtP8Egzjj1pXhIwkpxN3SvEDJJFG7nsOa7zTtQS4gRt/FeQeHvCfiR9TV7y4RYR0IXivStP09rMIrNvJA4bp+BrkrRUXoZpuW50iyK2Gz+lTxsFQHcehzjvWdGSUG3HB/KrJcbMcj9KwAbdt+7LYPsKzppM5+bBNWLmcA7c5AHasmd8Mx574GauKE2E8mB2Fc54vvfs2kylT+8YbVx6mtiWT5Tnr35rgfHF8ZrtLZTwg3Nj1PSvo+G8B9dx9ODWid36I8XOsWsNhJz6vRerObNGeKTmlFfu5+VhRSgUEUxCUUvakoGFFFBoABRTaXNILC0UUZpjCg0hIpM0gClo4oouAoptKKWi4DaCaDRSAKD0opOadgEJopcUVNgH0UUZqxIKTNGaWkMQGlpMUCkAtFFFAgooopiClFJRTAXNApKO1CAdQKaKcKYgNFFFADTRSkUlAx1ITS0lIBKKKKQF/wANnHiGwPpcL/OvTro7H38jB5x3ry/QjjWrIjjE6fzr1i4i3hlPI9RX5Zx+rYmk/wC6/wAz7zhLWjUXmvyCNlKgjgCpGLAeozWRBM0cpSQ4K8HPerkcisQB0PQ5r88krM+xi7ltJgCPTsauW0gbktxjjNZoIXnHPANSeZhBuOAT1FZs0NiFlUrkgirhlyh+boPyNYkU2GwMDvk1bSTchXcCf9k1mykWI2LEjnircSqVAJqlEEXnBznk56VPFIBJzjb2pFWRPPEGiChQBjgYrNmtTktj6ZFaYn3JkAgj2qrczIM5PTt6VUZNbDi7GJc2TOjhB83r3pslvcWzAtuDD7p9asvKA+4HGetUL/UrmNtytkdOfSt41GdEayReh+ch0cyLnvxjg/1qzEpl2K0ijBABxnoD/wDWrlBrUsJO9emTwKaviF0BlG44yQAK0U+5brR7nYXEkyKNrlieGA6+4/lzWW8kskzZ54ySBWLD4gJbJidiOc4rRh1USorhMZA4ApSmS6kejJY4ZFmyW9c5OBUn2dZptwzgEcVHHI0pLOMZrRtiqgcehrJ1DGU0y1Yw7UBx07U+5ROMEnHQ0kJ3MMflUrHkdM4zWLd2YkUWASW5yeB60t1P5a5zmoppPlwxAPpWfcXJLFMjiqirksbd3HynBDE81nTSnJ+bc3aiRz5hzzgYqpO+zcwPP9K2jEylKwy+uxBE7yEKqrkknrXm93M1xcyTv96Ri1b3iy/Lt9lDZz8z+3oK5w+tfr3BOVPD4d4ma1nt6L/M/O+Jsf7asqEdo/mBoFFKBX3J8wLQTSZpKBB3o70UUDCjFFFACYoIpaDQMTNJS0lACd6XFGOaKQBRRRSAUUZpKKAA0UUUABpRTSaBTAdiikzRSAdRRRVAJ9KUUUUmDFoNANBpEiUUUH60AKBSGlU0HmqC4g60pooNACCiiigYYpRnFAozTEANKKaKdQIQ0lLiigYCkpSKSkMKM0U2ouFi3pTbdStWHaZD/wCPCvaJRgEY6mvErM7buE+ki/zFe4nDYPryK/MfEJe/Rfk/0PuOD37tVen6nOa1bupM0K7nA5A7ioLC6U4ILcDBFb06KQTj8q5vUbdra4NxFwjH5h7+tfnUXdWZ9o1Z3RsRy7gff/ClDfLgn5vTPWsm1vcnG4HIwRWhC29d3G76cmoasyk7lxD0bgeuP5Vat5Nq7kwPb0rOibnHUj9KuRjMZxnPbNQ0WjSil3IQTzj86HlKuABnniq8KDIBOOKn8ndkDPHTms2WONwSvJIBPWopmBPHcc+9OEJGOD6E1PFasUG5RyKEBjXUZ+Y5I44FYtzFJyN5K9cV1d5YtINpJGKy59PlLFArVpGQrI5p7YmQl2OCOmOKha3BOxMdfyrfm02ZRu8tvl7lTUX2CXIIgYdzgYzzWqkS4oyLS3kEhBHQ4yO9atpGyHC9Dz04q7FYsCXZcZ7AVPFbktgqTjg1MpXGooitopMg5JHcVpwqFXPXsMnpSQW23BUEcdPelHBOM+lZN3KsWd/lIAWH+FNeUOwCknAxx61G7boxwemPxpnATcfXqKEiGQ30xXgHJBzWVLIzEljg9eav3zDGOCQOOORWTOW2lyTkfjWsUZyYx5cqxDY59eaytZ1BIIGY4J7DPU1YvJgVCj/WHCgDk1zniyJrY2sLHLlWZj+Ne/kGAhjcdTo1Nnv6LU8jN8XLC4WdSO6/UxJ5HmmeWQ5ZjkmmUooxX7vCEYRUYqyR+VSk5Nt7gBRSigirJG0UGigAooooGgooNNJ5oGOzRTM0ooAdSUvakoASlpM80uaACkpaQ9KVgDNGaaTS96ACjmlApDSAKKKTNO4AaKSikMloNFFUSFFFFJiCijFFIAooop2GFLmkooAXvQ3NJRTEHFFFFFwCiiigApc0lFMBc0hoopDsFB6UUGgENoHNKBQMCpGOi4kQ+jD+de4RH92PcAjn1FeIR/fX6ivbolUxRkf3RwPpX5p4hrSi/X9D7Tg/eqvT9RrpngYxWfqEO5CMcAdTWqMZcZ6mqcy4wGHAHWvzBM+8tc5Oe3kgkLxkeuPSrFlfYwrcEdav3sQZsDjPIrGuYGB3L97P6VsmpLUyceV6HQWj7gSvJPXNaFruztznocVyVlfNEQjEjHb1rc0273c5ye/NZyg0aKVzpbeIsDkY7g4q0kZIDLg5HSqen3CsATjPtWlbkPMCjcc5rIsI7b5txzxV63t9uD27UikBcE9sGp4nAUY9OTigWoqWqP8AeX6UjWcIJG1QfU1ajcFRzzUdzNtTA+/nHXqKtCKksC4O4Lgenc1HDZRSyAMny9TzU004bAz2571FHIquDleCMfjVXEyxJp8MiKGUDAwPQVWn0mFMsBjj16VdWbawAK56HJ9aSeUbMHPuCaTEm0YklqgyoB4qNLQpliBtx1rSlYMMAdP5UwhVix3rMtsyGtyzHIx9OpqG5wmR8yk8AitKdgr4DckdB296xdVuVVGc9BVRTbIlIytRcRng5Hfmsi5v41DAfMSMAVBq2pl3KRYJOce1VLK1fcJHJLHp7V1KKSuzncrvQvaZA73XnSDOfu57Vg+O5AdThTH3YR+pNdhYRcdAfXFcN44fPiKVQfuIi/TjP9a+u4JXtM0Uu0X/AJHz/E75cDbu0Y4paRaUV+yI/Nx2aM0lFMVgNFITSZoGFFFAoAKQjnNLRQUNANOoooADTaXIpKACiig9aQBRRRTACKTFL9aXikAlIadxTTSAKKBS8UgGkUUpopMB9FFFaCCiikAoAd2pKQmkpAOopAKWgGLQaM8UlMQUUCnUANopSKSgBaCKKWmA2j8aU0lIAopCaAaChaKaDTqAEJopabSYD16j617fZAPbISRyo4P0FeS+DdCvPE3iew0OyGJbuUKWPREHLMfYAE17BGixlokbcq/KD3OOK/MfEKrGXsYJ6q/6H2vB8XepLpoMZSrbKhmHAG36e1Wm+cZOAR1qFx857j3r8wPvEZs8AIJOMjpWZdR/Njb261vSBTkKOlULmHK9jxVxYNHO3NsGcqQQQOPemwSzWr9cgVpzwnd0xiqtxFnng1qpXRk49jQ0vVOOu0g9+9dTpd+rJ1H4V520RjcuoOe9X7DUTEvJwe4zUygnsNStueki5TKpuGT0x3qeKYBuMkjsTxXC2+sKWQ7yGUYz1rRh1ZCo+f3HPes3EtM6prsrjscY69aga7ckqQQeOa59tUBUMWyM4OB1oe/DqcdQfX/PFNITZr/a03HnBA598GpY7gGQgsCAck1zdzebiDgEAcYpRf8ABIyAufoKGhXOkN6u9vmIHWke8RlXqW7nFczJqO4DBGM4/wDr1NFdhBu3j0I9qOUZvNM4KsPu4/Ko5bg8cjLHr6Cs0364O4jYeeDzWXqOrpHuZGIAxx704wJlI1dTv4442+bkDmuN1rUmucxxPnLcmq1/f3N2+zcduck5qOKMMQCD17VtGKjuYuTkJa2wB3EZz3xWrbxZwMY4p9vGhTAQ4GOK0bS3AVQaznO5pGNgiQJGCBjivMvE0on167k5x5mPy4r1aVQIzu6DoK8eun8y8nk/vSMf1Nff+HtLmxFWp2SX3v8A4B8lxfO1GnDu/wBCNeKXNJSiv1hHwDA0ZpaSmISgUUYoADRRRQMKKKKBiGjNLSGgBMUUUUAFLRiigAxRSUUgDFFFJSAU0lFJmkA7FIaKTvTAWim0VIEtFFFaAFBoooASkpSKSkwFBpabTh0oQBRRRTEFGaKKBBRRRQAUZooo2AKKKKAENJTj0po60FAMU49KKD0oATNIxVVZnIAAySe1BOBXPeIdQLE20TbUH3vc15ea5lTwFF1Javou7OvB4WWJqcq26n0P+yZZi5k8SeKPLzFaRLZW7EclmG9z+QUfjV62ZncsePmP867L9l/w82m/A2xWRCk2pCW9fPB+c4X/AMdArkGDRTSJghldkYHjDAkEV+LZ9iquKqe1qPVn6NktGFCLhDYlK/I3QEnio2TqSeakUsFAOfepAF2ZG4j0Ir5y59EihKpCnAGOhxVWb7uNorUmjYrlTx6YqjNGoRuRTTEzNeLcpOFxjjHeoHtwVJ656Voldv3f/wBdMb5k6dOtaJktGPJAMc+vpVG4h5JUE88EVvSQq2OPqM1SmtyrZIxVp2IauYyzPE4DZII5NSC+AJZWPoauzW6ZYNyfpVCayzkKCB14NaJp7mTi1sPOoMFwG/PtQ2pOFI35yOMGs+e2lBPIIA4xVKRJFOCOa090luSNo6kcAF8duveg6h38zI+tc9g9yc+nvSAqTzke5NHKhczOlS+yclskcipDfuejk/TvXOrI3G0H2qUbpMBsgZ5otEOaRtvqDkE7hj9frVUtJdSfOxYA/nUEUO8cK34dMVo20AjAwcVLshq73GrGu/bjg1dSLJCjGe5pkEZZ+hPqavwRYYbfSsZyubRiTWiAH5hzjpWjaqeABncMnioYI8AEYJq5GpTBxz61i3c1sIyiSeCIZ+eRV6erAVy37QfhiLwz8Q7j7JEI7LUV+1wKBgKScOo9gwP5119srPqdmEzlp0/nVj9sXS5x4Y8P69CD5tpdNBIfVJFzg/8AAlr7DhLMf7PrOb+F6M+W4jw31qCit1seCilFQ2c6XEIkXg9GHoanr9po1oVqaqQd0z84qRlCTjJaoKQ0ZpK1ICiiigdgoopM0DDmlpAaCaAAmkoooAO9FFKKAFHSjijtSUgA4puaGoHSkAopCKUUUAJR1pW6U0UMBaQ0pFIelSAlFFFBRLRRRWhAUUUUAHam06jFSMbSg0uKMU0AUUUUwuFFLxikoFcKKKKACiiigBMilpMUoGKBhRmijigAo4pB9ar3dykC8nLHoK58TiaeHpupUdki6dKVWSjFajNVuBb2rEHDHgVzum2Mmrava6fGCXu7iOBcerMF/rUmp3DzNgnOOefWul+Blst58X/C1u4BX+0FkIP+wrN/Svy3OMzlmFbm2itkfYYHCLDU7dXuffXh20g07TbbT4ECQ2sSwoo6BVUKP5V5X8TdI/svxQZggW21Al0fHAlA+ZfxHP516zZKQoz35NQ+KtAtfEmhTafcjBI3RSD70bjlWHuDXgYij7WDR62Fr+xqJ9DwdDmQgkFRUykLnqR3FRy2l1Z6hPp1+nlXds+2Vex9GHqpHIqZo/lwp6dcetfNyi4uzPp4yUldEMigLx+VUblN3MZwWPpWiQwjBGQehqrcqc5GakooMnIVhtPcdabIny7h26jFTbQ+D0NEqkKSB+Qp3AhEajgZORVe4gJ+YA4+tW1JZtvHTPFIVz3GOatMVjImgyRxzVSWFsEA4J6DHWt2SJeeA2R0qvNDnOExkVSkLluc9LE7DBBX3x2rNuYiJOrAnnp1rqZrMCIsDg+lZlxaZJ3DPb1zVqViXA5mZGBIAf8ALrUEandnn0+lb89iCpJQDH5VHHYAjBZc9u5q1JGXIzMjTcwJLcdh2rRt7QsA2CQRnmtK0sAOoI+o61cMKxr0AwOPWk5j5CnDCUTOMVajjDDpj2qaONWj6Dr19anjhAx0/CobHaxHbxZPStGC1OM5xg+lNt1GPX8K07eNmU7hgY/SspSNFoNhtz27du1WvLO3nt7VNAgCDHWpUi3rtGc1A2ybwfY/bvFlhG33Vk8xsei810/7Ulot58IdUVVy9usdwvtscE/oTV34QaQHa51eT7uTFCcdQD8x/Pj8K1PibaLq3h/VdOIBEtjNHj3KH+tfRYCnyU7vqfO5hUU6tl0PgqxvDb3Y7RvwwrowQRkVx7KyohJ5A5rb0u+3Qojn2zX3vDObxoP6tWdk9vXsfK5tgXUXtYLVbmrRSKcilr78+asFFFFMApDS0hoGKKYetPFIRSsAgooopgLSUneloAKDRRSASgUuKKQBRRSHrTsAE0maCOaSkMcTQaF96KVhCCilopAPoooqxBQaKQ0DDvSim0tIBaKKKaAKKKKBBRRRTAKKKKAsFFFFABSZoNJkUmMM80E4OKY8iopZjgVn3eorgiPIHY15mYZrh8DG9R69up14bB1cQ/dWncsXl2sCcYLnoKxZpnkYu5yTUU0hd9zZJ9aZI3A9BX5xmea1sfO8tI9EfU4TBww0bR37kMrbm613f7PC/wDF6fDhJx++f/0W1cBj5q7P4LXy6f8AFfw3csQAL1UOf9oFf615Z2H6BWrAqCPSrsUhXgVmWDAxKau9qQHOfEXwfH4htFvrIJFqlup8pzwsg7o3sex7GvJYpf3kltcRGG5ibZLEwwyMOx/zzX0Pbv2rjPiP4ITXI/7S0vbBqsa4VugmUfwN/Q9q87GYT2i547np4HGez9yex5Y4bp2PaoLlDtJA/wAaFklhnltrqN4J4SVljkGGU/T/ADmp5AJBlWz9eteG4tOzPdTvqZDJtYnaeep96cnY5xkcirVxCF+9gBqiKsh4yPqKksh2/MSMYIqFsL8rDPHHFWCPvEcHPpUcg4IHAPaqQmQEnOKjKknjbjualVcYDFTz0xSuFGV+YY/KqBERhBGTx+vNQzWuF4YYPPTpVuNSCD0GfXr+NWcB49u0E989qBmA9opIGeAeuKIrVV4A6d8dfettogOcKT756UwqEySAe4wOlO4WMxkCL90gk9u1VplBx0JqzdyFpjtOV9qjjRuu33zighsLeMYwOfb1q3DEWbAGPr2pbeIrj5fbNXbeLBw3UUmSJbQH1IGK0baE5Xjp2pLeM+YOwq/EgyD0NZlMEgDHAGO1SW9jd6hqkGkadlbm7O1pAP8AUxj7z/h/Mio7uTyiiJlpZHCRovLMx6ACvWfh54WGh6a13dANqNzhpnznaOyD2H8668Hh3Wn5I48ZiFRh5mxY2Vro2jw2NmoSKGMIo9hWBer5izu3IKMP0rb1KbcSimsPXXFro13cHgRxOxP0Br6SKsrI+bbvqz8+tTXbcTKOglcD/vo1HasQpXPuKdOfMVnzkFy35nNQRsVJxVAbNnqarhJQcZxurVV1ZQwOQelcqGAJOMirlhqBgIDEshPIPb6V9ZkvEc6FqOJd49H2PFx+Vqp79JWfY6GioYJ450DI2R/KpTX3tKrCrFSg7pnzc4Sg7SVmLRQTSZrQkWiiigBDSUp6UnagBO9LSYoFMBc0ZoxSYpMBc0UlFIBe1IKAaKYC4pCKBS5pAIBRilzSYpAFFIaKTHYkooorQlBRRRSC4mKKWiiwXCkOaWigYlKKKKYrhRRRQFxOc0tFFIYUGmvLHGuZHC/Ws651RRnyRkf3j0rzcbm+Fwa/eS17Lc6qGCrV37sdO5ekkVOWYAe5qpNqEQJEQLY6segrEurqWaTG8kntihyyqEP418djeKq1XSguVd+p7uHyanDWo7ssXd28p3HHtVQuScnnFITmm9K+Yq1Z1ZOc3ds9eEIwjyxVkKc5pr85NBIzmkY5FZlEQzuq7o1ybLXdPvASDBdRyfkwNUj145p4zw3Qg8UAfo74duVudLguFPEiBh+IrZjORivNPghrP9qeBdKmL7j5Chj7gYr0yLBGaLAORiGzV2Jwwqsq7gKeMqaQHL/EjwNaeJLb7Vb7bfU4lxFMBgMP7j+o/lXi0iXmnXklhqcLQXMJwyt/Q9x719MI+VrmvHXg+x8TWQ3t5F3ED5M6jlfYjuPauDF4NVVzR3PRweOdJ8stjxYyLMABx71HNDsBznHtUGs2GreGtTNhq0BRjkxyKcpIPUH+nUUqXat98hlIrw5wcHaR78JKSvFkMmAdpPuD60ANjkkj6VI8atuIxgjtR8y/KwO0jhh2NSiiFlzgj9R0ppyRz/KpnAPQ5wM0x0bdlS3vimIhC/Nkj/Gp4WO7LdPpUUuAnIwR3FQidlG052jqadhply4KgZGcj34qjcSkx8Abj1NEl2pBRWJ571SlbdKMHJPYdqYNjWG8jIJPY/8A1qlVG2gZIA75/SnwIcnp7YqfaSAwP1oMxYAiY3McnkZNaFsjMvYc9cVTto2MhZ8e2a2LZFwCR+FRIZYtY4ywPzDH5VHqFysCjyvmYnaqjkk+gFV768+zwlYUaSU8KijJYnsB616P8LvAbWpTXdcjzfMN0MDYK24P/s/v2rfD4eVaVkYYjERoRuy18M/Bz25XXddiU3zD9zC3IgX/AOLPc9uld1eTBUIBA47U6eQRjavSs+VwxOTmvoaVKNKPLE+crVZVZc0ijNya5j4p3q2Xw51u5Jxtspef+AkV1VwPlO3vXlP7Smp/YvhdqUAO1roLAPozDP6VujFnxwBiBVJ5wKrg4Y1ZuTtIGKqNyaB2JMnHPSm496Fz60/gikBLbTyRMCrYIrYs9SR1Am4PqK58nBxUiMQQfSvRwGaYjAyvSenbocuJwdLEK018zq0dHXKMGHsacK5dbmSJxIrYye3WtO11XOPOTP8AtCvs8DxVQq+7XXK+/Q8HEZPUhrTdzWFBNRxTRTLujcNT6+mp1YVY80HdHkyhKDtJWFzRRijNaEiUhFO70YoAQZopcUGi4CGkHWlpO9IBcUlLSGgBO9LRSYpXAWjNFFK4CGikoouUS4opaQitCA60opMYooAWkozRQIKKKKQwoFFI7KoySAPelKcYq8nZAk27IdxR71RuNRhjyI8ufyFZlxfTyDl8D0FfPY7iXCYf3YPnflt956mHymvV1l7qNi4vIIRhnDN6Cs251OVsiPEY/Wswy45JyaiaQnvXx+N4hxmK0T5V2X+Z7mHyuhR1au/MsSzM7Zdy31NV5ZC3sKackUKpdwuOB1NeI23qz0dFsOtgR85/Cpm5yTQy44HHFBHAGaQDPemNmpStMYHPcUAMx0xSP0p6j0xTWHPWgBgHOcUrH5aQmnYOORQB9S/slaubjwsbJ3BaCQr+v+Br6MgfKgZr4q/Zj1ptN8TXNnvCrKFkwfTof6V9j6bMHiUg5yM0wNqE8VLjNVrds+9WkpAKFwKejHoacACKCtKwGV4o8P6d4h0x7G/gWRG5B6Mh7Mp7GvAvF/hLVfCk+Z83Fi7kJcKvA9A/of0NfSXIFVr+yt761e3uI0kjkUqyMMgg9jXNiMNGsvM68Ni5UH5Hy7BclPTp26VZjmDqCOuK6f4hfDi80R5dR0JZbmx5aSDq8I9R/eX9RXC2VyNysGBQjkZ5rwatCVKVpH0VGvCrG8WbQ2kKu4qfY80wjCk8j2xTFdGUAkjHAPXmrboY48AAhvXnNZGjKMwJwFUZxzziqsi4zuDE49KuuvILrgDoBzUe0ORjJx6HNMDMaIbh8hz2JHSpoIxnO0A9zWkkPy4ZDzxjHallix9yPBPcjrTE2VEi2/NuHvUmVBwoBJGasLbkjnA44qGYrDwX59KTEWbS3PDHnGeOwou7twRFbgvKxCqqDJYnsPWoLMXN9dpa2Fu9zdScRxJ1/wDrD3NezfDr4fQaMiajqWy41Jhkt/DEP7qf1NdGHw0qz02ObEYmNBa7lL4Z+BDZFNZ1oCS/IzHGeRAP6t79q9DkkCjaoAFSOVQYXiqzDcc179KlGnHlifPVqsqsuaRFK27OaqzAKuasupzVecZ4/KtTG5Skbg186fte6uItO03SI2Ba4m8xh6Ko/wAcV9EXZ8tCa+N/2ltV/tT4ktEHJSygCAf7Tcn+lUtgPLLjJA4NQdwcYqxMc5Heq/epGPXsaUtTenY0h5HpQApOc4qRQTUceMVKp4FACHptPNQAtG+ATgdKsjPtTJY9yn1HIoAfDdMrA8g46itO11OQYEnzr+RrCX1qVXIHWuvC46vhZXpSa/rsY1sPTrK01c6u1u4JxhXAb+6eDU5rkUmPGSavWupTpxvLD0avrMFxbtHEx+a/yPExGS9aT+TOgzQDVK31CKTCsNrH8qthgelfVYbH4fFK9KVzx62Gq0XaasPpCeaM8UhrsTMAopM0ZoYC0hNGfekNK4BmjNJSjFK47C4pD0pc0h6UBYSiiilcZMBRikorUzFxSEUUUgCikJAGSRj1qrPfwR8A7mHYdK48Vj8PhY81WaRvRw9Ws7QVy2eBmoJrqGIZdh9AcmsufUZZQQDtHtVNnyRnFfK43i211ho/N/5HtYfJXvVfyRoz6o3SJce5qlNcyOfnctUJfjOaiYkmvlMVmOJxbvVm3+X3Hs0cJRo/BEkd8/WonYEc0Z4prciuI6BjHJpOKG6mlyKAE57VYiQqmW6moohlwOw61YB7HGc0AIetL0bqKQ8Nmm5yelACsQKjY55NDnnr3pu7NACjHUU08mlH0xSNQA0DJ96cuOg6+54FN3beB1pycryTQB0Xw2vW0/xpp8oYgSMYm54wf/rivunwldrcafA6tncgOfwr8+7OdrW6huU+9C6yD8Dmvt/4U34u9FtpFORtBGPQjI/nVJaCbPTrbhc1bQg49apWpJTFXIwRjNSMsocdalAzUCtxUyH1oFcUqMUwDk1NimleaQEUkYdSCAa8r+I/wut7/wA7U9AjS2vslpIfuxTn/wBlb36Hv616zjFAGSeKyqU41FaRtSrSpS5os+SoZLjT72Sz1C2kguYm2yRS8FT/AJ79DWnbXvnMdrcH1Ir3fx54D0nxVanz08i8RcQ3UY+dPb/aX/ZP6V4Nr/h7WvCupCz1aBSGyIZ0P7uZR/dPr6g8ivFxOElS1Wx7+Fxsays9GXcK68KnuPWlitxu/hC59cfyrLtrxPlbeqgDoOtXYbtmG7aGUdiO3euSx2al4QKi5yRgc80oA2HK5GSAT/SqjanDGpGSfQZyBWZd6zvk2K2NoxlcAAUCsy1qF7HB8vy5HpUXhnQNY8W6r9n0yLbEhAmuHHyRj69z7V0Pgj4fal4nmjvL5JbPTM581uJJh6ID0H+0fwzXvWg6Np+h6fFZafax28MY4VBx9fUn3Nd+GwTqe9PY8/FY+NL3YaswvAvgjTPC9piFfMuZB+9uHHzP/gPaumc7RgU9yDxUZGa9mEFFWR4U5ym+aT1IWUsaaV25qfgCoZasggfknNVZB1Pp0qeV8VVuWBQ9vpQBka/OIbGSRsAKhJJr4J8b6o2t+K9T1InHnXDlCP7oOB+gr7B+NuujSPBWpTI+H8h1Xn+IjA/U18SsNuAeveqewkQEknB4Pr601sZ4qR+Tg8D9ajPUAnmpKEHBpScdO9B64600jn2oAcvX1p464ApgPpUg45oAcKcaAfTFAOaBFeUYYn1plWJEBBHY1XJx34oGKKejc9Kj780q0AWVkx0qzb3kkR+Vjis8HA9aep71dOpOnLmg7MmUIyVpK5v2+pKV/eDHuKvRyRyLlXBrllcg5qxFcMuMHFfR4LijFUfdq+8vxPLxGUUamsNGdF9KQismDUXA5O4ehq7HewycE7D6GvqcHxDhMTo5cr8/89jxq+WV6XS68ixRSKQRkHIpa9pSUldHA1bQKKKKYBRRRTuAmaKDRSHYnNJVa5vYYs87iO1ZdxqM0pwvyJ6CvFxvEeCwuilzPy/zO3D5XiKurVl5mzLPDEMu4Ht3rPuNUHIiXHu1ZUkjE/eJ/nTC2fWvk8ZxNi6+lP3F5b/ee3QyehT1nqyzNcSzEl3P51AzYB5zTC+aQntXz05ynLmk7s9SMVFWSHbsrkU3JzyKaSaCTxk1AwB9aM85oOMdaTPNAAxOM009DTicimHrQA3v60tLkDnFG5CwBYCgCaAbV68nrT2/Cjik9fagBM9qH6/4UE8ZpDQA1hn6U3b6VIBmkJxQA0DjvTHbH1p7ttHqfSogMnJ60AIeuc5JFODEUhFHegCVRk8/lX1r+zRqaXfhCzViPMjiMLfVDj+WK+SRjjgfSvoH9kzUlC6rpzHLwzJcJ7qw2t+oX86uO4mfVenMSgIrRB4GazNNIwCOhHFaI6VAXJlNTRsPWqw6VJGSOuKALikEU7AxUSMNtSqQQKGFhcCkVeacOaB1pDHBcGs7xJo2n6zpktlqVpHc28g+aNx37EH+EjsRzWnkYJ9K4r4heNBpkb6LoXk3evyplISciAHo7/0BpNX0Gm09Dyjxr8KtQ01pLrw3LLqlv5nNoSPPiz+QYfka5KXwx4wtsq/hzWI19Utyx/TNeoeFtUudOjYeJtR023nkYvIzaiGdj3OxM4+la95408Jwssh1HUJ1Tk/ZYWwfxbFck8vpyd1oejTzKrBWep4LaaXr95rEemW2lX0t5IeI3gZSB6ksAAPc8V7V8PPhJa6bNFqXiExX96MMkAGYYvrn75/Sm658bfDGm3FrC9jfR2ztsmnkIJjHrtBJI9a9V0a8stR02C/sbmK4t5kDRyRtlWHsadLBQg7vUzrY+pUVloi2kSxxgKO1DDIp2aRq6jhIiMHpUb9akY4FRE/hTEMc4GKrTNzU8rdfaqMzdRTERTsD3qjcylVPParMveqN8pWIn2NNajbPn39qjUCvh+G1Vz++uApHsOf8K+aZDliSD+Fe6ftVXGbzSrUMDxJIR+QFeFHNVMUdhpPHFNYAkYyCO9ByCTmlJzUDQ3ByRTX609h3B6elIRzQMRRUigc9qZjuKehGeaAFA460tA607vQA1qglA4OPrU7Hj60yQblxQIhGOwpV5JOcU1RgY9KcAAfY0DHdCBjrRntTcn1pRjrwKAHA8Yo3GkByM0UAPRjn0qVX561XFPFAFyC5kjOVcg/WrkGqN0lTI9R1rIzShj64rtw2Y4nCv91Nr8jnq4WjV+OJ0kN1BMPlfB9G4NS1zAc+tWIL6eI8SFl9DX0+D4se2Ih81/keRXyXrSf3m/RVK21GJ8CT5CauqVYZVga+pwmYYfFq9KSf5nj1sNVou00IaKXtRXaYnNu5NRliRmgkHuDRkY4r8VPvQPamc0ueTSA0AL3ooPWkU+lAAevGKbz3pcn0FHvk0AIPSjGaUDOOppR1yKBDTxTT1qUgY9CO1MK89KBkchOOKp3qSFQygcfnV4qR2prrQDMyK/liO1ySPfrWjbXiS4w3OOlVbm3SQcgA+tU2tpYW3oencUCOgQ7hQBz39qxrXUGjcCUH61qwzpL8ytkn0oGTcAdaidwF6ZPpRI5GQp5Heo1GTwfrQAmCfmbk0tOBNAHPtQA0jmkA5wRTzwKb2oAevUV6d+zlqX9n/Em2hzhLyGSAjsTjcv6rXmK8tg10PgW//svxXpOoM20W95E7Ef3dwB/QmmgZ+gWjOGiQDnjg+1bKAFRxXNeE5BLaLtbcF+6fUV00ZOOlD3EIaVSRQw70g60hFmNuOamVjjiqye/Spl6UDJ1NOYj1qFT19K4D45/E7T/hr4Sa+kVLnVbomLTrQtjzXx95vRF6k/Qd6BmN+0J8Y4Ph/pTaTowjvPE95GTBEeVtU6edIPT+6vc+1fGN34n8VXl1cXl7rGoTzzuXlkExXex7nHWs7WNd1PVtbvNV1K7e5vbyUy3Eznl2P8gOgHYYqqspLcnOaBmlFr3iGNwY9TvI/wDtuR/Ko59Y1u4m8yfXNQYjn/j4c8/nVHuev50hIBIByaAJ2u7mZx9p1C6lI6FpDxXqXwA+Lmo/DnWhaX91Lf8Ahi6k/wBIhY5e1Y/8tY89vVe/XrXkZwWBAOaaXCjIPH86LDP1F0TUrLV9Ng1HTriO5tZ4xJHJG2VZTyCDVmQ8V8Vfsj/F9vDGsR+CdeuD/Y95Jixkc/8AHtKx5T/dbsOx+tfZ6SLInmKwIPII7ikSI5HFRsQRTm65HSoWPXFNAyKU9eapyHk1bfkEmq+wZJNBJCEyc4qnrAItmHcitVU6H1rL1zIhdtwGwcVUdwZ8aftKXv2j4iNZqxYWtsiZz3OSf515W/pXWfFy9N/8QtZuSwP+ksg+i8VyRwAKJbjQ3A59aO9OwKQDikDDOCe47UjcjI6jpmn4GP50z9aAEU8Y5zTtvemMmQOxHQjtUkTHG1wAR39aAuOGKTPemyOiJljj3rNuL4sSluCSeM0guXLq4ihGWb8M1Qe7luDtjVgp71HHZs77pjuq/HEqLwuBQIWIYXGMcU/tS4ANLigY3Bp2MUck8UHk/SmFwA9KD6HGaVR3xQT7Uhh+VHal4Gec0g69KYAOadmmZJ/OnCkK4uTR0PtQaQ8Digdx4cjpVq2u5I2GDxVI0oYgYqoTlCXNF2ZMoqSszeiv0YBWBB9aKxFkIHWivdo8R42nHlbv6nnzyqhJ3SsMwc5pcGiivAPSEwfejHsKKKBC546UhHy+hoophcMc4zmjB9PrRRSAUDtzjp0pfTHpRRTGIeTnigiiikA0qTzmkbriiigBhT2FNMYIoooEVLi0R2yFwadaWbxN5juV9FB/nRRQMtA04YOc0UUAL1ByMUo6HHeiigAJ4pBziiigBVH4mrELlOVBJHSiihgfcnwO1CSfw7ZwzSGRvssM0Tk8yQyKCrfgcqfda9RjG047HpRRTAeVpGHGSKKKQkOBxipC3AoooAo+INWs9E0qbUb6YRW8IyxPc9gPc1+dnxv8Y674t+J2palrYaEwSG3trbflbeEH5VX1yPmJ7k0UUmPpc5SKUOck9atxtuXPNFFCAmVsfKPzpMHBx/OiimAw9MkE1VuJTkDPQUUUBcz7qZlIZWKsDkEHBB9c9q+8/wBlD4iXPi7wFa2GtMRqlqmze55nQcCT8f5j3oopAtj2hvu9+aibg9zRRTBjG+7zyaYQxOO1FFBI/bha5fx1eJp+i3l5I22OGFpHJ7ADNFFXFagfnzrFw13qVxdNy0szyH8WJ/rVIk47UUUpDQLzj3pw7GiipGIep96aTx7UUVRIgOOOeKDg896KKTAoXNrPJOCznyz2zUkduIiAAAO9FFCAmC/L8vQc80pJI7dc0UVSBi9QTgZ6U7GaKKGgAqetLjFFFTYBDnHSmE80UUihck0vPaiimhMTFB6Y6YoopiHgHHIPSj6UUUrANPHvQMg+tFFAxciiiikFz//Z",
+                pengantar: [
+                    "Portofolio ini memuat refleksi pembelajaran mata kuliah dan pengalaman Program Profesi Guru (PPG) sebagai dokumentasi perjalanan dan kesiapan saya untuk menjadi guru profesional yang berpihak pada peserta didik."
+                ]
+            },
+            semester1: {
+                title: "Refleksi Semester 1",
+                description: "Fondasi filosofis, pemahaman peserta didik, dan langkah awal praktik mengajar di lapangan.",
+                courses: [
+                    { id: "s1-1", title: "Filosofi Pendidikan dan Pendidikan Nilai", icon: "ph-books" },
+                    { id: "s1-2", title: "Pemahaman Peserta Didik dan Pembelajaran", icon: "ph-users" },
+                    { id: "s1-3", title: "Pembelajaran Mendalam dan Asesmen Dasar", icon: "ph-exam" },
+                    { id: "s1-4", title: "Praktik Pengalaman Lapangan Terbimbing", icon: "ph-chalkboard-teacher" },
+                    { id: "s1-5", title: "Pola Pikir Bertumbuh (Growth Mindset)", icon: "ph-plant" },
+                    { id: "s1-6", title: "Literasi Lintas Mata Pelajaran", icon: "ph-book-open-text" }
+                ]
+            },
+            semester2: {
+                title: "Refleksi Semester 2",
+                description: "Pengembangan sosial emosional, praktik mandiri, integrasi teknologi, dan kepemimpinan.",
+                courses: [
+                    { id: "s2-1", title: "Pembelajaran Sosial Emosional (PSE)", icon: "ph-heart-half" },
+                    { id: "s2-2", title: "Pembelajaran Mendalam dan Asesmen Lanjut", icon: "ph-magnifying-glass-plus" },
+                    { id: "s2-3", title: "Praktik Pengalaman Lapangan (Mandiri)", icon: "ph-student" },
+                    { id: "s2-4", title: "Projek Kepemimpinan", icon: "ph-flag-banner" },
+                    { id: "s2-5", title: "Teknologi Baru dalam Pengajaran", icon: "ph-laptop" }
+                ]
+            },
+            refleksiMatkul: {
+                // SEMESTER 1
+                "s1-1": {
+                    title: "Filosofi Pendidikan dan Pendidikan Nilai",
+                    connection: [
+                        "Setelah menelaah materi Filosofi Pendidikan dan Pendidikan Nilai, saya sadar bahwa tugas guru tidak berhenti pada penyampaian pelajaran. Guru juga menemani murid agar tumbuh menjadi pribadi yang berilmu, berkarakter, dan berbudi pekerti baik.",
+                        "Hal ini sejalan dengan pengalaman saya bahwa setiap murid datang dengan watak, kemampuan, latar belakang, dan kebutuhan belajar yang berlainan. Karena itu, guru perlu mengenali dirinya sendiri sekaligus memahami murid-muridnya agar pembelajaran yang dihadirkan terasa bermakna.",
+                        "Gagasan Ki Hadjar Dewantara dan nilai-nilai Pancasila meneguhkan keyakinan saya bahwa pendidikan bertujuan memanusiakan manusia dan menuntun murid meraih keselamatan serta kebahagiaan, baik sebagai pribadi maupun sebagai bagian dari masyarakat."
+                    ],
+                    challenge: [
+                        "Tantangan yang saya rasakan adalah menerjemahkan nilai-nilai filosofis tersebut ke dalam pembelajaran sehari-hari. Selain mengejar tujuan akademik, guru dituntut menumbuhkan rasa tanggung jawab, kemandirian, toleransi, disiplin, dan kepedulian pada diri murid.",
+                        "Perbedaan karakter dan latar belakang murid juga menuntut saya lebih sabar, lebih peka terhadap kebutuhan mereka, serta jeli memilih pendekatan yang cocok. Saya menyadari bahwa karakter tidak cukup ditanamkan lewat nasihat atau penjelasan materi. Ia perlu diwujudkan melalui keteladanan, pembiasaan, dan pengalaman nyata di lingkungan sekolah."
+                    ],
+                    concept: [
+                        "Konsep utama yang saya pelajari ialah bahwa pendidikan merupakan upaya menuntun tumbuh kembang murid menurut kodratnya, seperti yang dipikirkan Ki Hadjar Dewantara. Guru berperan sebagai pendamping yang membantu murid mengembangkan potensinya, bukan memaksakan kehendak atau menyeragamkan semua anak.",
+                        "Saya juga memahami pentingnya pendidikan budi pekerti yang melibatkan cipta, rasa, dan karsa, yakni pikiran, perasaan, dan kemauan. Pancasila menjadi dasar filosofis pendidikan nasional sekaligus sumber nilai untuk membentuk murid yang beriman, berakhlak mulia, menghargai keberagaman, demokratis, dan bertanggung jawab.",
+                        "Dengan demikian, keberhasilan pendidikan tidak cukup dilihat dari capaian akademik. Perkembangan karakter dan kemampuan murid mengamalkan nilai luhur dalam keseharian juga menjadi ukurannya."
+                    ],
+                    change: [
+                        "Usai mempelajari materi ini, saya ingin mengubah pola pikir dan praktik saya sebagai calon guru. Fokus saya tidak lagi hanya pada penyampaian materi dan hasil belajar, tetapi juga pada proses tumbuh kembang dan pembentukan karakter murid.",
+                        "Saya akan berupaya lebih mengenal potensi, kebutuhan, dan latar belakang setiap murid, memberi mereka ruang untuk terlibat aktif, serta menghadirkan suasana kelas yang aman, nyaman, dan menghargai perbedaan. Nilai-nilai Pancasila akan saya hidupkan melalui keteladanan, pembiasaan sikap positif, kerja sama, dan tanggung jawab dalam kegiatan belajar.",
+                        "Saya juga akan terus berefleksi dan meningkatkan kompetensi agar menjadi guru yang lebih bijaksana, adaptif, dan mampu menuntun murid berkembang sesuai potensinya. Bagi saya, menjadi guru berarti belajar sepanjang hayat, terus membenahi diri, dan memberi sumbangsih bagi generasi penerus bangsa."
+                    ],
+                    praktis: [
+                        "Secara praktis, guru perlu memahami keadaan emosional dan sosial murid, terutama ketika mereka kesulitan menyesuaikan diri. Guru dapat mendampingi secara personal, melibatkan teman sebaya, dan merancang pembelajaran kolaboratif yang sejalan dengan minat murid.",
+                        "Melalui penerapan pemikiran Ki Hadjar Dewantara dan nilai-nilai Pancasila, sekolah dapat menjadi tempat yang aman, nyaman, dan inklusif, sehingga murid merasa diterima dan bersemangat belajar."
+                    ],
+                    artefak: [
+                        {
+                            id: "a1-1", title: "Mendidik secara Kontekstual", type: "link",
+                            url: "https://docs.google.com/document/d/13Lp9tLXipVLoaI75XuMEHgr9Sq0tktkL/edit?usp=drive_link&ouid=108399565238951978782&rtpof=true&sd=true",
+                            desc: "Analisis studi kasus pentingnya memahami kebutuhan dan kondisi murid.",
+                            analisis: "Artefak Mendidik secara Kontekstual mengangkat pentingnya memahami kebutuhan dan kondisi murid lewat kasus Ali, yang kehilangan semangat bersekolah setelah pindah sekolah. Kasus ini memperlihatkan bahwa guru tidak boleh hanya memperhatikan prestasi akademik, tetapi juga keadaan emosional dan sosial murid. Berdasarkan gagasan Ki Hadjar Dewantara dan nilai Pancasila, guru perlu menuntun murid sesuai kodratnya, membangun lingkungan yang aman dan inklusif."
+                        }
+                    ]
+                },
+                "s1-2": {
+                    title: "Pemahaman Peserta Didik dan Pembelajaran",
+                    connection: [
+                        "Materi Memahami Peserta Didik dan Pembelajaran mempertemukan teori perkembangan murid dengan keadaan nyata di kelas, yaitu kasus Nina, Adi, Mario, dan Laksmi. Mereka memiliki kekuatan dan tantangan tersendiri (logis-matematis, sosial, kinestetik, dan imajinatif).",
+                        "Keempat kasus ini menunjukkan bahwa setiap murid memiliki karakteristik, potensi, dan kebutuhan belajar yang berbeda. Maka guru perlu lebih dulu memahami perkembangan kognitif, sosial-emosional, fisik, dan moral murid sebelum menetapkan strategi pembelajaran."
+                    ],
+                    challenge: [
+                        "Tantangan terbesar guru ialah merancang pembelajaran yang dapat mengakomodasi perbedaan murid tersebut sehingga semuanya belajar secara optimal. Guru perlu membantu Nina lebih percaya diri, mengarahkan Adi agar tetap fokus, membimbing Mario mengendalikan aktivitas fisiknya, serta mendukung Laksmi menyelesaikan tugas terarah tanpa memadamkan kreativitasnya.",
+                        "Guru juga perlu menciptakan suasana kelas yang aman dan menghargai perbedaan agar murid tidak merasa rendah diri saat menemui kesulitan. Tantangan lainnya adalah memilih metode, media, dan bentuk penilaian yang cocok."
+                    ],
+                    concept: [
+                        "Konsep pokok yang saya pelajari adalah bahwa teori perkembangan murid menjadi landasan dalam merancang pembelajaran. Piaget (tahap operasional konkret), Vygotsky (ZPD dan scaffolding), Erikson (rasa percaya diri vs rendah diri), serta Kohlberg/Gilligan (perkembangan moral).",
+                        "Dengan memahami teori-teori ini, guru dapat merancang pembelajaran yang tidak hanya mengasah kemampuan akademik, tetapi juga menopang perkembangan sosial, emosional, dan moral murid."
+                    ],
+                    change: [
+                        "Saya sadar bahwa satu strategi yang sama tidak bisa diterapkan kepada semua murid tanpa memperhatikan kebutuhan masing-masing. Saya perlu melihat perbedaan kemampuan dan perilaku murid sebagai bagian dari keberagaman yang harus dipahami.",
+                        "Dalam praktik, saya akan merancang pembelajaran berdiferensiasi (misal pada materi Siklus Air) lewat eksperimen, diskusi, dan poster dengan peran yang sesuai potensi murid. Saya juga akan menghargai proses belajar, memberi kesempatan memperbaiki kesalahan, dan menyediakan ruang refleksi."
+                    ],
+                    praktis: [
+                        "Materi ini dapat diterapkan dengan lebih dulu memahami karakteristik tiap murid sebelum memilih strategi. Guru perlu memberi petunjuk yang jelas, pendampingan sesuai kebutuhan, apresiasi atas usaha, serta kesempatan bagi murid untuk berkolaborasi. Dengan menerapkan teori perkembangan, pembelajaran menjadi lebih inklusif dan menyenangkan."
+                    ],
+                    artefak: [
+                        {
+                            id: "a1-2", title: "Lembar Kerja Aktivitas 1c-1", type: "link",
+                            url: "https://drive.google.com/file/d/1iFxtiKi4xquXsX3Tihmvpf8Omvln3DWO/view?usp=drive_link",
+                            desc: "Rancangan pembelajaran berdiferensiasi pada materi Siklus Air.",
+                            analisis: "Artefak ini memperlihatkan pemahaman saya tentang pentingnya mengenali karakteristik murid berdasarkan teori Piaget, Vygotsky, Erikson, serta Kohlberg. Rancangan pembelajaran Siklus Air telah mewadahi perbedaan potensi Nina, Adi, Mario, dan Laksmi melalui eksperimen, diskusi, dan poster, yang mendorong belajar lewat pengalaman konkret dan kerja sama."
+                        }
+                    ]
+                },
+                "s1-3": {
+                    title: "Pembelajaran Mendalam dan Asesmen Dasar",
+                    connection: [
+                        "Materi ini berhubungan erat dengan praktik mengajar saya. Selama ini, kegiatan belajar kerap bertumpu pada keaktifan murid melalui diskusi dan permainan. Padahal, murid yang aktif belum tentu memahami materi secara mendalam.",
+                        "Oleh sebab itu, guru perlu mengaitkan materi dengan pengalaman nyata murid, mendorong mereka memahami konsep, menerapkannya dalam kehidupan sehari-hari, dan merefleksikan proses belajarnya."
+                    ],
+                    challenge: [
+                        "Tantangan saya adalah merancang pembelajaran yang tidak sekadar menyenangkan, tetapi juga menumbuhkan berpikir kritis, kreativitas, kolaborasi, komunikasi, dan pemahaman yang mendalam.",
+                        "Guru juga perlu memastikan bahwa kegiatan belajar tidak berhenti pada jawaban benar, tetapi menunjukkan seberapa jauh murid memahami keterkaitan antarkonsep dan mampu menerapkannya pada situasi baru dengan asesmen yang tepat."
+                    ],
+                    concept: [
+                        "Pembelajaran Mendalam bertumpu pada tiga prinsip: berkesadaran, bermakna, dan menggembirakan. Pengalaman belajarnya mencakup memahami, mengaplikasi, dan merefleksi.",
+                        "Kedalaman pemahaman murid dianalisis dengan Taksonomi SOLO (Prestructural, Unistructural, Multistructural, Relational, Extended Abstract) untuk menilai kualitas pemahaman, sementara Taksonomi Bloom berfokus pada kognitif."
+                    ],
+                    change: [
+                        "Saya akan menggeser praktik mengajar dari sekadar menuntaskan tugas menjadi pembelajaran yang mendorong pemahaman mendalam. Saya akan membuka pelajaran dengan pertanyaan pemantik yang dekat dengan kehidupan murid.",
+                        "Dalam asesmen, saya akan menilai bukan hanya jawaban akhir, tetapi juga proses berpikir, kemampuan mengaitkan konsep, dan penerapan pada konteks baru."
+                    ],
+                    praktis: [
+                        "Pembelajaran yang semula berfokus pada hafalan perlu diubah menjadi kontekstual, aktif, dan berorientasi pada pemahaman mendalam. Guru merancang pengalaman belajar nyata sehingga asesmen mampu memberi gambaran utuh tentang kompetensi murid."
+                    ],
+                    artefak: [
+                        {
+                            id: "a1-3", title: "Rancangan Pembelajaran Mendalam", type: "link",
+                            url: "https://docs.google.com/document/d/1LlpObO8i6Y_8fp02cumTnt6OJsVnSl6I/edit?usp=drive_link&ouid=108399565238951978782&rtpof=true&sd=true",
+                            desc: "Dokumen rancangan pembelajaran dengan fokus asesmen komprehensif.",
+                            analisis: "Dari artefak ini saya memahami bahwa pembelajaran mendalam tidak cukup ditandai oleh antusiasme. Pembelajaran harus membantu murid membangun pemahaman dan mengaitkannya dengan kehidupan sehari-hari."
+                        }
+                    ]
+                },
+                "s1-4": {
+                    title: "Praktik Pengalaman Lapangan Terbimbing",
+                    connection: [
+                        "Pengalaman PPL di SD Negeri 3 Jati Wetan menyadarkan saya bahwa keberhasilan pembelajaran bergantung pada kemampuan mengaitkan materi dengan pengalaman murid. Misalnya materi 'petugas berseragam' yang dihubungkan dengan pengalaman melihat polisi di jalan.",
+                        "Saya juga menyadari bahwa penggunaan media seperti PowerPoint, video, permainan edukatif, dan LKPD mampu membuat suasana belajar menarik dan mendorong keterlibatan."
+                    ],
+                    challenge: [
+                        "Tantangan yang saya temui: (1) Pengelolaan waktu untuk kegiatan yang terlalu beragam, (2) Pemerataan partisipasi murid antara yang aktif dan pasif, (3) Menjaga fokus dari distraksi materi yang kurang relevan, dan (4) Mengembangkan pertanyaan pemantik lanjutan tingkat tinggi."
+                    ],
+                    concept: [
+                        "Pengalaman PPL memperkuat pemahaman tentang pentingnya pembelajaran yang berpusat pada murid, kontekstual, dan menyenangkan dengan media yang tepat.",
+                        "Refleksi dan umpan balik dari Guru Pamong sangat berharga untuk mengetahui kekurangan dan menentukan langkah perbaikan."
+                    ],
+                    change: [
+                        "Saya berencana membenahi pengelolaan waktu dan memilih kegiatan yang benar-benar selaras dengan tujuan. Saya akan membagi kesempatan berpendapat secara merata.",
+                        "Saya akan mengembangkan media interaktif dan pembelajaran berdiferensiasi agar murid lebih aktif dan percaya diri."
+                    ],
+                    praktis: [
+                        "Pengalaman ini saya bawa untuk merancang pembelajaran berikutnya: menyusun perencanaan, memilih media, mengelola kelas, dan mengevaluasi. Saya akan terus meminta masukan dari Guru Pamong untuk meningkatkan kualitas mengajar."
+                    ],
+                    artefak: [
+                        {
+                            id: "a1-4", title: "LK.4 Refleksi PPL Siklus 3", type: "link",
+                            url: "https://docs.google.com/document/d/1Y_H_ZrdSG_2JsivMnJTZeeNow4CyYL5u/edit?usp=drive_link&ouid=108399565238951978782&rtpof=true&sd=true",
+                            desc: "Refleksi pelaksanaan pembelajaran terbimbing.",
+                            analisis: "Artefak ini menjadi bukti evaluasi saya selama berpraktik mengajar. Dokumen memperlihatkan pemakaian PowerPoint, video, dan LKPD, serta refleksi terhadap pengelolaan waktu dan partisipasi. Ini menjadi dasar perbaikan saya."
+                        }
+                    ]
+                },
+                "s1-5": {
+                    title: "Pola Pikir Bertumbuh (Growth Mindset)",
+                    connection: [
+                        "Materi ini mempertemukan keyakinan guru tentang kemampuan murid dengan praktik kelas. Di SD 7 Gondosari, saat mengajar jenis sudut kelas IV, masih ada murid yang malu dan kurang percaya diri.",
+                        "Keadaan itu mengingatkan bahwa setiap murid memiliki kecepatan belajar berbeda. Guru perlu meyakini bahwa kemampuan dapat tumbuh melalui usaha, ketekunan, dan umpan balik yang membangun."
+                    ],
+                    challenge: [
+                        "Tantangan utamanya adalah mengubah kebiasaan belajar yang terpaku pada nilai menjadi menghargai proses dan keberanian mencoba. Murid yang takut salah sering kali diam atau mudah menyerah.",
+                        "Sebagai guru, saya juga perlu menghindari label negatif dan belajar menerima kritik untuk memperbaiki diri."
+                    ],
+                    concept: [
+                        "Growth Mindset adalah keyakinan bahwa kecerdasan dapat dikembangkan melalui dedikasi dan belajar dari kesalahan (berlawanan dengan Fixed Mindset).",
+                        "Lima area penting: Challenge (tantangan), Obstacles (rintangan), Effort (usaha), Critiques (kritik), dan Success of Others (keberhasilan orang lain sebagai inspirasi). Kerangka MAR (Mindset, Action, Result) juga penting."
+                    ],
+                    change: [
+                        "Saya akan menghargai usaha dan strategi murid, bukan hanya jawaban benar. Menggunakan kalimat positif ('Kamu belum berhasil sekarang, mari coba cara lain').",
+                        "Memberi kesempatan mencoba kembali setelah salah, memberi umpan balik spesifik, dan mendorong murid saling membantu tanpa membandingkan."
+                    ],
+                    praktis: [
+                        "Dalam pembelajaran di kelas II SD 3 Jati Wetan, growth mindset diterapkan dengan memberi murid kesempatan berbuat salah dan memperbaiki pemahaman menggunakan benda konkret."
+                    ],
+                    artefak: [
+                        {
+                            id: "a1-5", title: "LK 4.2 Cara Pikirmu, Cermin Dirimu", type: "link",
+                            url: "https://docs.google.com/document/d/1l8XY1IN1k2Su4z-bVVjh2NX0D1A9a4vG/edit?usp=drive_link&ouid=108399565238951978782&rtpof=true&sd=true",
+                            desc: "Analisis respons Fixed Mindset vs Growth Mindset.",
+                            analisis: "Lembar kerja ini membantu membedakan respons pola pikir tetap dan bertumbuh dalam 10 situasi. Artefak ini menunjukkan bahwa pola pikir sangat memengaruhi cara kita menghadapi rintangan dan menyikapi keberhasilan orang lain."
+                        }
+                    ]
+                },
+                "s1-6": {
+                    title: "Literasi Lintas Mata Pelajaran",
+                    connection: [
+                        "Kemampuan literasi tidak hanya dibutuhkan pada Bahasa Indonesia, tetapi juga Matematika, Seni, dan PJOK. Misalnya pada soal cerita Matematika, murid harus membaca, memahami, dan menyampaikan cara penyelesaiannya.",
+                        "Keterampilan membaca, menulis, berbicara, mendengarkan, dan mengamati sangat menentukan keberhasilan belajar."
+                    ],
+                    challenge: [
+                        "Tantangan saya adalah memadukan literasi ke berbagai mata pelajaran agar lebih menarik. Karena kemampuan literasi murid berbeda-beda, saya harus memilih strategi dan media yang pas.",
+                        "Saya juga perlu meningkatkan penggunaan teks multimodal (gambar, video, audio) agar murid memperoleh informasi melalui berbagai jalur."
+                    ],
+                    concept: [
+                        "Literasi lintas mata pelajaran adalah kemampuan memakai keterampilan berbahasa/mengamati untuk mengolah informasi di berbagai ilmu. Ini membangun berpikir kritis dan pemecahan masalah.",
+                        "Konsep teks multimodal melibatkan beberapa moda komunikasi (visual, bunyi, gerak, ruang) sehingga tidak bergantung hanya pada teks tertulis."
+                    ],
+                    change: [
+                        "Saya menyadari guru harus merancang pembelajaran yang membantu murid mengolah informasi secara aktif. Saya akan menerapkan strategi literasi di tiap mapel lewat membaca soal, berdiskusi, mengamati video, dan presentasi.",
+                        "Pemakaian media bervariasi akan saya tingkatkan agar murid dengan berbagai gaya belajar tetap dapat memahami materi."
+                    ],
+                    praktis: [
+                        "Keterampilan literasi hadir di setiap mapel. Pada Matematika, murid diajak menemukan informasi penting dari soal cerita. Gambar dan diagram (multimodal) digunakan agar materi lebih konkret dan mudah dicerna."
+                    ],
+                    artefak: [
+                        {
+                            id: "a1-6", title: "Solusi Permasalahan Literasi", type: "link",
+                            url: "https://drive.google.com/file/d/1HAJDxK00nyGfQJsXQUA7xTTxko76VQXF/view?usp=drive_link",
+                            desc: "Identifikasi penerapan teks multimodal dan strategi literasi.",
+                            analisis: "Artefak ini mencerminkan pemahaman saya tentang pentingnya literasi lintas mapel. Melalui tugas ini saya mengerti bahwa gambar, diagram, dan infografis dapat membuat materi yang abstrak menjadi lebih konkret dan mudah dipahami."
+                        }
+                    ]
+                },
+                
+                // SEMESTER 2
+                "s2-1": {
+                    title: "Pembelajaran Sosial Emosional (PSE)",
+                    connection: [
+                        "Materi PSE berkaitan dengan pengalaman saya sebagai guru kelas di SD 3 Jati Wetan menghadapi murid yang beragam. Guru perlu memahami kondisi emosional murid dan membangun hubungan positif.",
+                        "Suasana kelas yang aman dan saling menghargai sangat memengaruhi keberanian murid untuk bertanya dan terlibat."
+                    ],
+                    challenge: [
+                        "Tantangan yang saya pahami adalah mengelola emosi diri ketika menghadapi murid yang kesulitan atau kurang aktif, tanpa memberi label negatif.",
+                        "Membangun komunikasi yang baik dengan murid, orang tua, dan rekan guru membutuhkan kesabaran serta keterampilan sosial tingkat tinggi."
+                    ],
+                    concept: [
+                        "PSE berdasarkan kerangka CASEL: kesadaran diri, manajemen diri, kesadaran sosial, keterampilan berelasi, dan pengambilan keputusan yang bertanggung jawab.",
+                        "PSE diintegrasikan dalam mapel, misal IPAS kelas VI melalui diskusi dan refleksi. Lima kompetensi ini juga jadi dasar keteladanan guru."
+                    ],
+                    change: [
+                        "Saya menyadari profesionalisme guru tercermin dari cara bersikap dan mengendalikan emosi. Saya akan membiasakan diri lebih sabar, mendengarkan murid, dan menghindari label negatif.",
+                        "Saya akan mengintegrasikan PSE melalui kerja kelompok, pembagian peran, dan refleksi harian."
+                    ],
+                    praktis: [
+                        "Pada pembelajaran IPAS, saya membagi kelompok dengan peran jelas, melatih menghargai pendapat, dan menutup dengan refleksi perasaan. Saya berusaha menjadi teladan dengan bersikap tenang saat murid berbuat salah."
+                    ],
+                    artefak: [
+                        {
+                            id: "a2-1", title: "Lembar Kerja Integrasi PSE", type: "link",
+                            url: "https://docs.google.com/document/d/1bXlyl-3q5cOSRKg8Mbs2KA4rSV36Z7eL/edit?usp=drive_link&ouid=108399565238951978782&rtpof=true&sd=true",
+                            desc: "Kaitan PSE dengan mapel IPAS dan profesionalisme guru.",
+                            analisis: "Artefak ini mengaitkan 5 kompetensi CASEL dengan IPAS (organ pencernaan) via kegiatan kelompok. Kekuatannya ada pada penjelasan sikap nyata guru (sabar, mencari tahu penyebab kesalahan). Ke depannya perlu ditambah contoh rutinitas spesifik seperti kesepakatan kelas."
+                        }
+                    ]
+                },
+                "s2-2": {
+                    title: "Pembelajaran Mendalam dan Asesmen Lanjut",
+                    connection: [
+                        "Berkaitan dengan merancang pembelajaran kelas II SD 3 Jati Wetan, di mana kesiapan belajar murid berbeda. Asesmen awal sangat penting untuk memahami kebutuhan, bukan hanya akademik.",
+                        "Pengalaman sehari-hari murid (misal benda di sekitar) adalah titik awal bermakna untuk memahami materi."
+                    ],
+                    challenge: [
+                        "Merancang pembelajaran yang mengakomodasi perbedaan kesiapan tanpa mengabaikan tujuan pembelajaran. Saya perlu menentukan strategi dan asesmen untuk murid level tinggi, sedang, dan butuh pendampingan.",
+                        "Memastikan semua murid mendapat kesempatan adil untuk berpartisipasi."
+                    ],
+                    concept: [
+                        "Pembelajaran mendalam (berkesadaran, bermakna, menggembirakan). Konsep Teaching at the Right Level (TaRL) yang menyesuaikan hasil asesmen diagnostik.",
+                        "Model Discovery Learning (stimulation, problem statement, data collection, processing, verification, generalization) dengan asesmen berkelanjutan."
+                    ],
+                    change: [
+                        "Saya ingin menggunakan asesmen diagnostik sebagai dasar pengelompokan dan bentuk pendampingan. Saya akan selalu mengaitkan materi dengan benda/lingkungan sekitar murid.",
+                        "Menyediakan berbagai cara agar murid bisa menunjukkan pemahamannya secara adil."
+                    ],
+                    praktis: [
+                        "Rancangan observasi benda nyata di kelas (buku, pensil) untuk menemukan nama dan ciri-ciri. Murid diberi LKPD yang sesuai tingkat kesiapannya (instruksi sederhana untuk yang butuh pendampingan)."
+                    ],
+                    artefak: [
+                        {
+                            id: "a2-2", title: "Lesson Design Bahasa Indonesia", type: "link",
+                            url: "https://drive.google.com/file/d/1GdoF0oJ4C-inwTCaM9AE1LZ_KHy6wNkj/view?usp=drive_link",
+                            desc: "Rancangan Discovery Learning dan TaRL materi benda sekitar.",
+                            analisis: "Lesson design ini menggunakan alur Discovery Learning yang runtut dengan diferensiasi kesiapan belajar (tinggi, sedang, perlu pendampingan). Media menggunakan benda konkret di sekolah. Hal ini bisa dikembangkan lagi dengan rubrik penilaian yang lebih detail."
+                        }
+                    ]
+                },
+                "s2-3": {
+                    title: "Praktik Pengalaman Lapangan (Mandiri)",
+                    connection: [
+                        "Melalui observasi lingkungan di SD 3 Jati Wetan, saya mengenali kondisi fisik, iklim keamanan, hingga dukungan orang tua. Pengalaman ini mengajarkan bahwa pembelajaran efektif harus disesuaikan dengan kondisi riil sekolah."
+                    ],
+                    challenge: [
+                        "Tantangan utamanya menerjemahkan hasil observasi menjadi RPP yang tepat. Saya harus mengelola kelas agar semua aktif dan melakukan asesmen secara tepat.",
+                        "Meningkatkan kemampuan refleksi diri pasca-mengajar untuk menemukan celah perbaikan."
+                    ],
+                    concept: [
+                        "Observasi lingkungan sebagai dasar perencanaan, pembelajaran berpihak pada murid, dan pentingnya iklim sekolah (kepemimpinan instruksional, kemitraan orang tua, keamanan)."
+                    ],
+                    change: [
+                        "Saya menyadari jadi guru tak hanya menguasai materi, tapi memahami ekosistem sekolah. Saya ingin meniru budaya refleksi guru-guru di sekolah dan terbuka terhadap masukan dari pamong/DPL."
+                    ],
+                    praktis: [
+                        "Memanfaatkan sarana sekolah (smart TV, WiFi) secara maksimal. Berkomunikasi aktif dengan orang tua melalui grup paguyuban kelas untuk mendukung pembelajaran."
+                    ],
+                    artefak: [
+                        {
+                            id: "a2-3", title: "LK 2 Observasi Lingkungan Belajar", type: "link",
+                            url: "https://docs.google.com/document/d/1q1SdkGwbsyCb5ppaeBJPsFYVeHkNbW4I/edit?usp=drive_link&ouid=108399565238951978782&rtpof=true&sd=true",
+                            desc: "Hasil observasi ekosistem SD 3 Jati Wetan.",
+                            analisis: "Artefak ini mencatat 6 aspek observasi. Kekuatannya memberikan gambaran nyata fasilitas (TV, proyektor, CCTV) dan budaya sekolah. Catatan perbaikannya adalah perlu melampirkan dokumentasi nyata penggunaan fasilitas tersebut."
+                        }
+                    ]
+                },
+                "s2-4": {
+                    title: "Projek Kepemimpinan",
+                    connection: [
+                        "Berkaitan dengan pelaksanaan projek 'Eco Action' di Desa Jati Wetan mengatasi masalah sampah. Sebagai Ketua Pelaksana Tim 2, saya belajar kepemimpinan berarti mengoordinasikan, bekerja sama, dan menemukan solusi masalah nyata di masyarakat."
+                    ],
+                    challenge: [
+                        "Menyelaraskan ide 12 anggota tim, mengurus perizinan perangkat desa, serta mengelola anggaran terbatas (mengandalkan sumbangan swadaya). Harus adaptif menjaga komunikasi agar kegiatan relevan dengan warga."
+                    ],
+                    concept: [
+                        "Empowering leadership (kepemimpinan memberdayakan) menempatkan mahasiswa sebagai fasilitator. Meliputi tahapan perencanaan, implementasi, monitoring, evaluasi, dan keberlanjutan program."
+                    ],
+                    change: [
+                        "Pola pikir saya berkembang bahwa guru juga agen perubahan masyarakat. Saya belajar membagi tanggung jawab, terbuka pada masukan, dan menjadikan kendala sebagai evaluasi."
+                    ],
+                    praktis: [
+                        "Pengalaman menyusun proposal dan memimpin dapat diterapkan di sekolah untuk mengajak murid/orang tua dalam program peduli lingkungan, memposisikan saya sebagai fasilitator."
+                    ],
+                    artefak: [
+                        {
+                            id: "a2-4", title: "Proposal Projek Eco Action", type: "link",
+                            url: "https://drive.google.com/file/d/1PIv5aM7VX4HYwnEAHCmjHb46pIt43OEu/view?usp=drive_link",
+                            desc: "Proposal pemberdayaan masyarakat terkait pengelolaan sampah.",
+                            analisis: "Artefak mencakup 4 sub-projek dari hulu (pemilahan) ke hilir (pengolahan bernilai ekonomi seperti ecoprint totebag). Kekuatannya pada alur terhubung dan rincian tugas tim. Ke depan perlu ada indikator dampak jangka panjang."
+                        }
+                    ]
+                },
+                "s2-5": {
+                    title: "Teknologi Baru dalam Pengajaran dan Pembelajaran",
+                    connection: [
+                        "Pengalaman saya memanfaatkan PPT interaktif dan video animasi di IPAS kelas VI (Perjalanan Udara di Tubuhku). Teknologi membantu memvisualisasikan hal tak kasat mata (seperti alveolus) sehingga murid antusias."
+                    ],
+                    challenge: [
+                        "Memastikan teknologi mendukung tujuan pedagogis, bukan sekadar gaya. Saat microteaching, ketergantungan pada koneksi internet menjadi masalah jika tidak ada rencana cadangan offline."
+                    ],
+                    concept: [
+                        "Pemanfaatan teknologi harus berbasis keputusan pedagogis. Teknologi efektif untuk pemahaman awal, sedangkan pemahaman relasional butuh pengalaman langsung (misal uji model paru-paru). Langkah refleksi pasca-implementasi sangat krusial."
+                    ],
+                    change: [
+                        "Saya akan menentukan fungsi pedagogis tiap media dengan jelas. Selalu menyiapkan plan B (offline) dengan flashdisk/kartu cetak. Memakai teknologi juga untuk kebutuhan dokumentasi asesmen."
+                    ],
+                    praktis: [
+                        "Menggunakan animasi di awal untuk klarifikasi setelah uji model. Meminta masukan rekan/pamong untuk merevisi rancangan agar integrasi teknologi benar-benar bermakna."
+                    ],
+                    artefak: [
+                        {
+                            id: "a2-5", title: "LK Refleksi & Tindak Lanjut", type: "link",
+                            url: "https://drive.google.com/file/d/1PIv5aM7VX4HYwnEAHCmjHb46pIt43OEu/view?usp=drive_link", // Menggunakan link yang ada dari dokumen
+                            desc: "Evaluasi implementasi teknologi dalam PBL IPAS.",
+                            analisis: "Artefak ini memuat 7 revisi rancangan pasca-masukan, seperti menata ulang waktu penutup dan menyiapkan media luring. Kekuatannya ada pada analisis jujur untuk perbaikan berkelanjutan."
+                        }
+                    ]
+                }
+            },
+            refleksiPPG: {
+                identifikasi: [
+                    "Melalui perjalanan Program Profesi Guru (PPG) ini, saya menyadari bahwa saya memiliki antusiasme dan komitmen tinggi dalam merancang pembelajaran interaktif serta mengintegrasikan teknologi (seperti media animasi dan PPT interaktif) untuk memfasilitasi gaya belajar murid yang beragam. Pengalaman di SD Negeri 3 Jati Wetan mengasah kemampuan saya beradaptasi dengan kondisi riil sekolah.",
+                    "Namun, saya juga menyadari perlunya perbaikan dalam aspek manajemen waktu kelas saat melaksanakan pembelajaran berdiferensiasi tingkat lanjut, serta pemerataan partisipasi murid secara real-time. Hal ini menjadi catatan penting untuk terus saya evaluasi sebagai seorang pendidik yang memegang prinsip *growth mindset*."
+                ],
+                pendidikan: [
+                    "Pendidikan di Indonesia tengah berada pada momentum transformasi yang sangat baik melalui paradigma Kurikulum Merdeka. Pendekatan ini menggeser orientasi dari sekadar ketuntasan materi akademik (teacher-centered) menjadi pengembangan utuh kompetensi dan karakter murid melalui Profil Pelajar Pancasila (student-centered).",
+                    "Saya memaknai perubahan ini sebagai peluang besar bagi guru untuk merdeka berkreasi. Guru tidak lagi hanya menjadi penyampai informasi, melainkan fasilitator yang menuntun kodrat anak sesuai dengan filosofi Ki Hadjar Dewantara, menghadirkan pembelajaran yang inklusif, aman, dan memperhatikan kondisi sosial-emosional anak."
+                ],
+                upaya: [
+                    "Upaya yang saya lakukan selama PPG adalah terus membiasakan diri untuk berefleksi secara jujur—baik melalui jurnal pribadi maupun evaluasi bersama Guru Pamong dan Dosen Pembimbing Lapangan. Saya berusaha mempraktikkan langsung teori-teori seperti TaRL (Teaching at the Right Level) dan Discovery Learning di dalam kelas PPL.",
+                    "Di luar kelas, saya belajar mengasah kepemimpinan melalui Projek Kepemimpinan di masyarakat Desa Jati Wetan, belajar berkolaborasi dengan rekan sejawat, serta aktif memperbarui wawasan mengenai pedagogik dan literasi lintas mata pelajaran."
+                ],
+                rtl: [
+                    "1. Menerapkan asesmen diagnostik dan formatif secara konsisten untuk merancang pembelajaran berdiferensiasi (TaRL) di setiap materi esensial.",
+                    "2. Membangun rutinitas Pembelajaran Sosial Emosional (PSE) harian, seperti kesepakatan kelas dan refleksi emosi, agar tercipta iklim kelas yang aman dan berpihak pada murid.",
+                    "3. Melakukan kolaborasi dan berbagi praktik baik pemanfaatan teknologi secara luring maupun daring bersama rekan sejawat di sekolah.",
+                    "4. Berkomitmen untuk terus belajar sepanjang hayat melalui platform komunitas guru dan siap menjadi agen perubahan di lingkungan sekolah maupun masyarakat."
+                ]
+            },
+            penutup: {
+                kesan: [
+                    "Menjadi seorang pendidik sejati bukanlah tujuan akhir, melainkan sebuah perjalanan panjang (maraton) pembelajaran sepanjang hayat. Program Profesi Guru (PPG) ini telah membongkar dan membangun kembali paradigma saya tentang apa artinya mengajar.",
+                    "Tidak sekadar membekali saya dengan tumpukan teori pedagogik, program ini memberi saya ruang nyata untuk berbuat salah, berefleksi, dan bangkit menjadi lebih baik. Pengalaman menuntun anak-anak di kelas hingga memberdayakan masyarakat melalui projek telah menumbuhkan empati dan kesiapan saya sebagai guru yang profesional."
+                ],
+                ucapan: [
+                    "Rasa syukur dan terima kasih yang tak terhingga saya sampaikan kepada Allah SWT. Terima kasih yang mendalam kepada Bapak/Ibu Dosen Pembimbing Lapangan dan Guru Pamong atas bimbingan tanpa lelah. Terima kasih kepada keluarga yang selalu menjadi support system, rekan-rekan mahasiswa PPG Universitas Muria Kudus atas sinerginya, serta keluarga besar SD Negeri 3 Jati Wetan dan warga Desa Jati Wetan yang telah memberikan ruang belajar berharga bagi saya."
+                ]
+            }
+        };
+
+        /**
+         * =====================================================================
+         * RENDERER & ROUTER LOGIC
+         * =====================================================================
+         */
+        const renderParagraphs = (texts) => {
+            if (!texts || texts.length === 0) return '<p class="text-gray-500 italic">Konten akan segera diisi.</p>';
+            return texts.map(t => `<p class="mb-4 leading-relaxed">${t}</p>`).join('');
+        };
+
+        const create4CCard = (title, content, colorClass, icon) => `
+            <div class="glass-card rounded-xl border-t-2 ${colorClass} p-6 h-full flex flex-col relative overflow-hidden group">
+                <div class="absolute -right-6 -top-6 text-${colorClass.split('-')[1]}-500/10 transition-transform group-hover:scale-110 group-hover:rotate-12 duration-500">
+                    <i class="ph ${icon} text-9xl"></i>
+                </div>
+                <div class="flex items-center space-x-3 mb-4 relative z-10">
+                    <i class="ph ${icon} text-2xl ${colorClass.replace('border-', 'text-')} drop-shadow-[0_0_8px_currentColor]"></i>
+                    <h3 class="font-bold text-lg font-serif text-emas-300 tracking-wide uppercase text-sm">${title}</h3>
+                </div>
+                <div class="text-sm text-gray-300 flex-grow relative z-10 leading-relaxed font-light">
+                    ${renderParagraphs(content)}
+                </div>
+            </div>
+        `;
+
+        const createArtifactCard = (art) => {
+            return `
+                <div class="glass-card rounded-xl flex flex-col md:flex-row mb-8 overflow-hidden group">
+                    <div class="w-full md:w-1/3 bg-black/60 border-b md:border-b-0 md:border-r border-emas-700/30 relative flex flex-col items-center justify-center p-8 group-hover:bg-black/40 transition-colors">
+                        <i class="ph ph-file-text text-7xl text-emas-500/80 mb-4 group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs uppercase tracking-widest text-emas-300/60 font-semibold bg-emas-900/40 px-3 py-1 rounded-full border border-emas-700/30">Dokumen Artefak</span>
+                    </div>
+                    <div class="w-full md:w-2/3 p-6 md:p-8 flex flex-col">
+                        <h4 class="font-serif font-bold text-xl text-white mb-2 group-hover:text-emas-300 transition-colors">${art.title}</h4>
+                        <p class="text-sm text-gray-400 mb-6 font-light italic border-l-2 border-emas-700/50 pl-3">${art.desc}</p>
+                        
+                        <h5 class="text-xs uppercase tracking-widest mb-2 text-emas-500 font-semibold flex items-center"><i class="ph ph-magnifying-glass mr-2"></i> Analisis Reflektif</h5>
+                        <p class="text-sm text-gray-300 flex-grow mb-6 leading-relaxed font-light">
+                            ${art.analisis}
+                        </p>
+                        
+                        <a href="${art.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-emas-600 to-emas-700 hover:from-emas-500 hover:to-emas-600 text-black px-6 py-3 rounded-lg transition-all text-sm font-bold w-fit shadow-[0_0_15px_rgba(212,175,55,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.5)] transform hover:-translate-y-0.5">
+                            <i class="ph ph-arrow-square-out text-lg"></i>
+                            <span>Buka Dokumen / Link</span>
+                        </a>
+                    </div>
+                </div>
+            `;
+        };
+
+        const app = document.getElementById('app-container');
+
+        const renderHome = () => {
+            app.innerHTML = `
+                <div class="fade-in">
+                    <!-- Hero Section -->
+                    <div class="glass-card rounded-3xl p-8 md:p-14 mb-12 flex flex-col md:flex-row items-center gap-10 relative overflow-hidden">
+                        <!-- Glow Effects -->
+                        <div class="absolute top-0 right-0 w-96 h-96 bg-emas-700/10 rounded-full blur-3xl -z-10 mix-blend-screen"></div>
+                        <div class="absolute bottom-0 left-0 w-64 h-64 bg-emas-500/5 rounded-full blur-3xl -z-10 mix-blend-screen"></div>
+                        
+                        <div class="w-48 h-48 md:w-56 md:h-56 flex-shrink-0 relative group">
+                            <div class="absolute inset-0 bg-emas-500 rounded-full blur-lg opacity-40 group-hover:opacity-70 transition-opacity duration-500"></div>
+                            <img src="${siteData.profil.foto}" alt="Foto Profil" class="relative w-full h-full object-cover rounded-full border-4 border-emas-700 shadow-2xl shadow-emas-900/50">
+                        </div>
+                        <div class="text-center md:text-left z-10">
+                            <p class="text-emas-500 font-bold tracking-widest uppercase text-xs mb-4 flex items-center justify-center md:justify-start">
+                                <i class="ph ph-buildings mr-2 text-lg"></i> ${siteData.profil.lptk}
+                            </p>
+                            <h1 class="text-4xl md:text-6xl font-serif font-bold mb-6 text-white drop-shadow-lg leading-tight">
+                                ${siteData.profil.nama}
+                            </h1>
+                            <div class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto md:mx-0 font-light leading-relaxed border-l-4 border-emas-700 pl-4 bg-black/20 p-4 rounded-r-lg">
+                                ${renderParagraphs(siteData.profil.pengantar)}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shortcuts -->
+                    <div class="flex items-center justify-center space-x-4 mb-8">
+                        <div class="h-px bg-emas-700/30 w-1/4"></div>
+                        <h2 class="text-2xl font-serif font-bold text-emas-300 uppercase tracking-widest">Jelajahi</h2>
+                        <div class="h-px bg-emas-700/30 w-1/4"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                        <a href="#/semester-1" class="group glass-card p-8 rounded-2xl text-center flex flex-col items-center hover:-translate-y-2">
+                            <div class="w-20 h-20 bg-black/80 border border-emas-700/50 text-emas-500 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-6 transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]">
+                                <i class="ph ph-books text-4xl"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-xl mb-3 text-white group-hover:text-emas-300 transition-colors">Semester 1</h3>
+                            <p class="text-sm text-gray-400 font-light">Refleksi filosofis, pemahaman peserta didik, dan PPL Terbimbing.</p>
+                        </a>
+                        <a href="#/semester-2" class="group glass-card p-8 rounded-2xl text-center flex flex-col items-center hover:-translate-y-2">
+                            <div class="w-20 h-20 bg-black/80 border border-emas-700/50 text-emas-500 rounded-2xl flex items-center justify-center mb-6 group-hover:-rotate-6 transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]">
+                                <i class="ph ph-chalkboard-teacher text-4xl"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-xl mb-3 text-white group-hover:text-emas-300 transition-colors">Semester 2</h3>
+                            <p class="text-sm text-gray-400 font-light">Refleksi PSE, integrasi teknologi, kepemimpinan, dan PPL Mandiri.</p>
+                        </a>
+                        <a href="#/refleksi-ppg" class="group glass-card p-8 rounded-2xl text-center flex flex-col items-center hover:-translate-y-2">
+                            <div class="w-20 h-20 bg-black/80 border border-emas-700/50 text-emas-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.2)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]">
+                                <i class="ph ph-sparkle text-4xl"></i>
+                            </div>
+                            <h3 class="font-serif font-bold text-xl mb-3 text-white group-hover:text-emas-300 transition-colors">Makna PPG</h3>
+                            <p class="text-sm text-gray-400 font-light">Sintesis perjalanan diri, pendidikan, dan rencana tindak lanjut.</p>
+                        </a>
+                    </div>
+                </div>
+            `;
+        };
+
+        const renderSemester = (semId) => {
+            const data = semId === '1' ? siteData.semester1 : siteData.semester2;
+            
+            let cards = data.courses.map((course, index) => `
+                <a href="#/matkul/${course.id}" class="glass-card p-6 rounded-2xl flex flex-col h-full group hover:-translate-y-1">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-14 h-14 bg-black/60 border border-emas-700/30 rounded-xl flex items-center justify-center text-emas-500 group-hover:bg-emas-900/30 group-hover:border-emas-500 transition-colors shadow-inner">
+                            <i class="ph ${course.icon} text-3xl"></i>
+                        </div>
+                        <span class="text-6xl font-serif font-bold text-white/5 select-none group-hover:text-emas-500/10 transition-colors">0${index + 1}</span>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl leading-snug flex-grow text-gray-100 group-hover:text-emas-300 transition-colors">${course.title}</h3>
+                    <div class="mt-6 pt-4 border-t border-emas-700/20 text-xs uppercase tracking-widest text-emas-600 font-bold flex items-center group-hover:text-emas-400 transition-colors">
+                        Baca Refleksi <i class="ph ph-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                </a>
+            `).join('');
+
+            app.innerHTML = `
+                <div class="fade-in">
+                    <div class="mb-12 text-center max-w-3xl mx-auto">
+                        <span class="text-emas-500 font-bold tracking-widest uppercase text-xs mb-2 block"><i class="ph ph-folder-open"></i> Kumpulan Modul</span>
+                        <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4 text-white">${data.title}</h1>
+                        <p class="text-gray-400 font-light text-lg">${data.description}</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                        ${cards}
+                    </div>
+                </div>
+            `;
+        };
+
+        const renderCourse = (courseId) => {
+            let courseMeta, semesterData, prefix;
+            if (courseId.startsWith('s1')) {
+                semesterData = siteData.semester1; prefix = 'semester-1';
+            } else {
+                semesterData = siteData.semester2; prefix = 'semester-2';
+            }
+            
+            const currentIndex = semesterData.courses.findIndex(c => c.id === courseId);
+            courseMeta = semesterData.courses[currentIndex];
+            const prevCourse = currentIndex > 0 ? semesterData.courses[currentIndex - 1].id : null;
+            const nextCourse = currentIndex < semesterData.courses.length - 1 ? semesterData.courses[currentIndex + 1].id : null;
+            
+            const detail = siteData.refleksiMatkul[courseId];
+
+            let artifactsHtml = '<p class="text-gray-500 italic font-light glass-card p-6 rounded-xl text-center border-dashed">Artefak belum tersedia untuk modul ini.</p>';
+            if (detail.artefak && detail.artefak.length > 0) {
+                artifactsHtml = detail.artefak.map(createArtifactCard).join('');
+            }
+
+            app.innerHTML = `
+                <div class="fade-in">
+                    <!-- Nav Header -->
+                    <div class="mb-10 text-center">
+                        <nav class="inline-flex items-center text-xs uppercase tracking-widest text-gray-400 mb-4 bg-black/40 px-4 py-2 rounded-full border border-emas-700/20">
+                            <a href="#/${prefix}" class="hover:text-emas-400 transition-colors font-semibold">Semester ${courseId.split('-')[0].replace('s', '')}</a>
+                            <i class="ph ph-caret-right mx-3 text-emas-700"></i>
+                            <span class="text-emas-300 font-bold truncate max-w-[200px] sm:max-w-none">Modul ${currentIndex + 1}</span>
+                        </nav>
+                        <h1 class="text-3xl md:text-5xl font-serif font-bold mb-6 text-white leading-tight max-w-4xl mx-auto">${courseMeta.title}</h1>
+                    </div>
+
+                    <!-- 4C Refleksi -->
+                    <section class="mb-14">
+                        <div class="flex items-center space-x-4 mb-8">
+                            <div class="w-12 h-12 bg-emas-900/40 border border-emas-500 rounded-full flex items-center justify-center text-emas-400"><i class="ph ph-arrows-out-cardinal text-2xl"></i></div>
+                            <h2 class="text-2xl font-serif font-bold text-white tracking-wide">Refleksi 4C</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                            ${create4CCard('Connection (Koneksi)', detail.connection, 'border-blue-500', 'ph-link-break')}
+                            ${create4CCard('Challenge (Tantangan)', detail.challenge, 'border-red-500', 'ph-warning')}
+                            ${create4CCard('Concept (Konsep)', detail.concept, 'border-emerald-500', 'ph-lightbulb')}
+                            ${create4CCard('Change (Perubahan)', detail.change, 'border-purple-500', 'ph-arrows-clockwise')}
+                        </div>
+                    </section>
+
+                    <!-- Artefak -->
+                    <section class="mb-14 relative">
+                        <div class="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-emas-700/0 via-emas-500 to-emas-700/0"></div>
+                        <div class="flex items-center space-x-4 mb-8 pl-4">
+                            <div class="w-12 h-12 bg-emas-900/40 border border-emas-500 rounded-full flex items-center justify-center text-emas-400"><i class="ph ph-folder-open text-2xl"></i></div>
+                            <h2 class="text-2xl font-serif font-bold text-white tracking-wide">Artefak Pembelajaran</h2>
+                        </div>
+                        <div class="pl-0 md:pl-4">
+                            ${artifactsHtml}
+                        </div>
+                    </section>
+
+                    <!-- Kaitan Praktis -->
+                    <section class="mb-16">
+                        <div class="flex items-center space-x-4 mb-8">
+                            <div class="w-12 h-12 bg-emas-900/40 border border-emas-500 rounded-full flex items-center justify-center text-emas-400"><i class="ph ph-briefcase text-2xl"></i></div>
+                            <h2 class="text-2xl font-serif font-bold text-white tracking-wide">Kaitan Praktis</h2>
+                        </div>
+                        <div class="glass-card p-8 md:p-10 rounded-2xl relative overflow-hidden">
+                            <i class="ph ph-quotes absolute text-9xl -top-4 -right-4 text-emas-900/30 rotate-12"></i>
+                            <div class="text-gray-200 font-light text-lg leading-relaxed relative z-10">
+                                ${renderParagraphs(detail.praktis)}
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Navigasi Bawah -->
+                    <div class="flex justify-between items-center pt-8 border-t border-emas-700/30">
+                        ${prevCourse ? `<a href="#/matkul/${prevCourse}" class="group flex items-center text-sm md:text-base font-bold uppercase tracking-wider text-gray-400 hover:text-emas-400 transition-colors"><i class="ph ph-arrow-left mr-3 text-xl group-hover:-translate-x-1 transition-transform"></i> Sebelumnya</a>` : '<div></div>'}
+                        <a href="#/${prefix}" class="w-12 h-12 rounded-full bg-black/50 border border-emas-700/30 text-emas-500 flex items-center justify-center hover:bg-emas-900/50 hover:border-emas-500 transition-all shadow-[0_0_10px_rgba(212,175,55,0.1)]" title="Ke Daftar Modul"><i class="ph ph-grid-four text-xl"></i></a>
+                        ${nextCourse ? `<a href="#/matkul/${nextCourse}" class="group flex items-center text-sm md:text-base font-bold uppercase tracking-wider text-gray-400 hover:text-emas-400 transition-colors">Berikutnya <i class="ph ph-arrow-right ml-3 text-xl group-hover:translate-x-1 transition-transform"></i></a>` : '<div></div>'}
+                    </div>
+                </div>
+            `;
+        };
+
+        const renderPPG = () => {
+            const data = siteData.refleksiPPG;
+            
+            const createSection = (title, content, icon, delay) => `
+                <div class="glass-card rounded-2xl p-8 md:p-10 mb-8 relative overflow-hidden group transition-all" style="animation: fadeIn 0.8s ease-out ${delay}s both;">
+                    <div class="absolute w-2 h-full top-0 left-0 bg-gradient-to-b from-emas-300 to-emas-700 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="flex items-start md:items-center flex-col md:flex-row mb-6 pl-4 md:pl-6">
+                        <div class="w-14 h-14 rounded-full bg-black/60 border-2 border-emas-600 flex items-center justify-center text-emas-400 mb-4 md:mb-0 md:mr-6 shadow-[0_0_15px_rgba(202,138,4,0.3)]">
+                            <i class="ph ${icon} text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-white tracking-wide">${title}</h3>
+                    </div>
+                    <div class="text-gray-300 md:pl-[88px] font-light text-lg leading-relaxed">
+                        ${renderParagraphs(content)}
+                    </div>
+                </div>
+            `;
+
+            app.innerHTML = `
+                <div class="fade-in max-w-4xl mx-auto">
+                    <div class="text-center mb-16">
+                        <span class="text-emas-500 font-bold tracking-widest uppercase text-xs mb-2 block border-b border-emas-700/50 w-max mx-auto pb-2"><i class="ph ph-compass"></i> Sintesis Perjalanan</span>
+                        <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6 text-white leading-tight">Refleksi Makna PPG</h1>
+                        <p class="text-gray-400 font-light text-lg max-w-2xl mx-auto">Catatan mendalam tentang penemuan jati diri, pandangan atas pendidikan Indonesia, serta komitmen menjadi guru profesional.</p>
+                    </div>
+
+                    ${createSection('Identifikasi Diri', data.identifikasi, 'ph-fingerprint', 0.1)}
+                    ${createSection('Pendidikan di Indonesia', data.pendidikan, 'ph-globe-hemisphere-east', 0.2)}
+                    ${createSection('Upaya Menjadi Guru Profesional', data.upaya, 'ph-steps', 0.3)}
+                    ${createSection('Rencana Tindak Lanjut', data.rtl, 'ph-list-checks', 0.4)}
+                </div>
+            `;
+        };
+
+        const renderClosing = () => {
+            const data = siteData.penutup;
+            app.innerHTML = `
+                <div class="fade-in max-w-4xl mx-auto text-center mt-12 mb-20 relative">
+                    <!-- Dekorasi Belakang -->
+                    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-emas-700/5 rounded-full blur-3xl -z-10 mix-blend-screen pointer-events-none"></div>
+
+                    <div class="inline-flex items-center justify-center w-24 h-24 rounded-full border border-emas-600 bg-black/50 mb-8 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+                        <i class="ph ph-quotes text-5xl text-emas-400"></i>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl font-serif font-bold mb-10 text-white tracking-wide">Kesan <span class="text-emas-500 font-light italic">&</span> Pesan</h1>
+                    
+                    <div class="glass-card p-8 md:p-12 rounded-3xl mb-12 text-left relative overflow-hidden border-t-4 border-t-emas-500 shadow-2xl">
+                        <div class="text-xl md:text-2xl text-gray-200 font-serif italic leading-relaxed mb-8 relative z-10 font-light">
+                            ${renderParagraphs(data.kesan)}
+                        </div>
+                        <div class="h-px bg-gradient-to-r from-transparent via-emas-700/50 to-transparent w-full my-8"></div>
+                        <div class="text-gray-400 font-light text-lg leading-relaxed relative z-10 text-justify">
+                            <strong class="text-emas-400 font-serif font-bold uppercase tracking-widest text-sm block mb-4">Ucapan Terima Kasih</strong>
+                            ${renderParagraphs(data.ucapan)}
+                        </div>
+                    </div>
+
+                    <div class="pt-8">
+                        <h3 class="text-emas-500 text-sm uppercase tracking-widest font-bold mb-8 relative inline-block">
+                            <span class="bg-black px-4 relative z-10">Mari Terhubung</span>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-px bg-emas-800/50 z-0"></div>
+                        </h3>
+                        <div class="flex justify-center space-x-8">
+                            <a href="mailto:khairul.huda@example.com" class="text-gray-400 hover:text-white transition flex flex-col items-center group">
+                                <div class="w-14 h-14 rounded-full bg-black/80 border border-emas-800 group-hover:border-emas-400 flex items-center justify-center mb-3 group-hover:bg-emas-900/30 transition-all shadow-lg">
+                                    <i class="ph ph-envelope-simple text-2xl group-hover:text-emas-400 transition-colors"></i>
+                                </div>
+                                <span class="text-xs font-medium tracking-wide">Email</span>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition flex flex-col items-center group">
+                                <div class="w-14 h-14 rounded-full bg-black/80 border border-emas-800 group-hover:border-blue-500 flex items-center justify-center mb-3 group-hover:bg-blue-900/30 transition-all shadow-lg">
+                                    <i class="ph ph-linkedin-logo text-2xl group-hover:text-blue-400 transition-colors"></i>
+                                </div>
+                                <span class="text-xs font-medium tracking-wide">LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        // Router
+        const router = () => {
+            const hash = window.location.hash.slice(1) || '/beranda';
+            
+            // Update Active Nav State
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const route = link.getAttribute('data-route');
+                const isSemester1Active = hash.startsWith('/matkul/s1-') && route === '/semester-1';
+                const isSemester2Active = hash.startsWith('/matkul/s2-') && route === '/semester-2';
+                
+                if(route === hash || isSemester1Active || isSemester2Active) {
+                    link.classList.add('text-emas-500', 'font-bold');
+                    link.classList.remove('text-gray-300');
+                    // Add subtle glow indicator under active nav item
+                    if(!link.querySelector('.nav-indicator') && window.innerWidth >= 768) {
+                       const indicator = document.createElement('div');
+                       indicator.className = 'nav-indicator absolute -bottom-5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-emas-500 rounded-full shadow-[0_0_8px_#eab308]';
+                       link.style.position = 'relative';
+                       link.appendChild(indicator);
+                    }
+                } else {
+                    link.classList.remove('text-emas-500', 'font-bold');
+                    link.classList.add('text-gray-300');
+                    const indicator = link.querySelector('.nav-indicator');
+                    if(indicator) indicator.remove();
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (hash === '/beranda') { renderHome(); }
+            else if (hash === '/semester-1') { renderSemester('1'); }
+            else if (hash === '/semester-2') { renderSemester('2'); }
+            else if (hash.startsWith('/matkul/')) { renderCourse(hash.split('/')[2]); }
+            else if (hash === '/refleksi-ppg') { renderPPG(); }
+            else if (hash === '/penutup') { renderClosing(); }
+            else { renderHome(); }
+            
+            document.getElementById('mobile-menu').classList.add('hidden');
+        };
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Initialize App
+        window.addEventListener('hashchange', router);
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            router();
+        });
+
+    </script>
+</body>
+</html>
+
